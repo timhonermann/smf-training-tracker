@@ -33,7 +33,15 @@
     "@nx/angular:application": {
       "e2eTestRunner": "none",
       "linter": "eslint",
-      "style": "css",
+      "style": "scss",
+      "unitTestRunner": "vitest"
+    },
+    "@nx/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
       "unitTestRunner": "vitest"
     }
   },

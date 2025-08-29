@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-nx-welcome',
+  selector: 'stt-nx-welcome',
   imports: [CommonModule],
   template: `
     <!--
@@ -432,7 +432,7 @@ import { CommonModule } from '@angular/common';
         <div id="welcome">
           <h1>
             <span> Hello there, </span>
-            Welcome angular-demo 👋
+            Welcome smf-training-tracker-ui 👋
           </h1>
         </div>
         <!--  HERO  -->
@@ -739,14 +739,13 @@ import { CommonModule } from '@angular/common';
                   <span> Enable faster CI & better DX </span>
                 </h2>
               </div>
-              <p>Your Nx Cloud remote cache setup is almost complete.</p>
-
+              <p>Your workspace is connected to Nx Cloud.</p>
               <a
-                href="https://cloud.nx.app/connect/sKAv9EpS8d"
+                href="https://nx.dev/ci/intro/ci-with-nx#learn-about-nx-on-ci"
                 target="_blank"
                 rel="noreferrer"
               >
-                Click here to finish
+                Learn about Nx on CI
               </a>
             </div>
           </div>
@@ -798,7 +797,7 @@ nx run-many -t build test lint</pre>
               </svg>
               View project details
             </summary>
-            <pre>nx show project angular-demo</pre>
+            <pre>nx show project smf-training-tracker-ui</pre>
           </details>
 
           <details>

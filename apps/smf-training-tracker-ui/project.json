@@ -1,26 +1,27 @@
 {
-  "name": "angular-demo",
+  "name": "smf-training-tracker-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
-  "sourceRoot": "apps/angular-demo/src",
+  "prefix": "stt",
+  "sourceRoot": "apps/smf-training-tracker-ui/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/angular-demo",
-        "browser": "apps/angular-demo/src/main.ts",
+        "outputPath": "dist/apps/smf-training-tracker-ui",
+        "browser": "apps/smf-training-tracker-ui/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/angular-demo/tsconfig.app.json",
+        "tsConfig": "apps/smf-training-tracker-ui/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/angular-demo/public"
+            "input": "apps/smf-training-tracker-ui/public"
           }
         ],
-        "styles": ["apps/angular-demo/src/styles.css"]
+        "styles": ["apps/smf-training-tracker-ui/src/styles.scss"]
       },
       "configurations": {
         "production": {
@@ -51,10 +52,10 @@
       "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "angular-demo:build:production"
+          "buildTarget": "smf-training-tracker-ui:build:production"
         },
         "development": {
-          "buildTarget": "angular-demo:build:development"
+          "buildTarget": "smf-training-tracker-ui:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -62,7 +63,7 @@
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
       "options": {
-        "buildTarget": "angular-demo:build"
+        "buildTarget": "smf-training-tracker-ui:build"
       }
     },
     "lint": {
@@ -72,15 +73,15 @@
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "reportsDirectory": "../../coverage/apps/angular-demo"
+        "reportsDirectory": "../../coverage/apps/smf-training-tracker-ui"
       }
     },
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "angular-demo:build",
-        "staticFilePath": "dist/apps/angular-demo/browser",
+        "buildTarget": "smf-training-tracker-ui:build",
+        "staticFilePath": "dist/apps/smf-training-tracker-ui/browser",
         "spa": true
       }
     }

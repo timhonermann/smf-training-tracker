@@ -4,10 +4,10 @@ import { NxWelcome } from './nx-welcome';
 
 @Component({
   imports: [NxWelcome, RouterModule],
-  selector: 'app-root',
+  selector: 'stt-root',
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  styleUrl: './app.scss',
 })
 export class App {
-  protected title = 'angular-demo';
+  protected title = 'smf-training-tracker-ui';
 }
