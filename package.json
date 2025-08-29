@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
+    "start:ui": "nx serve",
+    "start:svc": "nx run smf-training-tracker-svc:bootRun",
     "build": "nx build",
     "test": "nx test"
   },
@@ -34,6 +35,7 @@
     "@nx/angular": "21.4.0",
     "@nx/eslint": "21.4.0",
     "@nx/eslint-plugin": "21.4.0",
+    "@nx/gradle": "21.4.0",
     "@nx/js": "21.4.0",
     "@nx/vite": "21.4.0",
     "@nx/web": "21.4.0",
@@ -58,7 +60,6 @@
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.29.0",
     "vite": "^6.0.0",
-    "vitest": "^3.0.0",
-    "@nx/gradle": "21.4.0"
+    "vitest": "^3.0.0"
   }
 }

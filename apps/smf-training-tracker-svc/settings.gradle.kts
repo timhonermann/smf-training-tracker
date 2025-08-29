@@ -1,1 +1,1 @@
-rootProject.name = "smf_training_tracker_svc"
+rootProject.name = "smf-training-tracker-svc"
