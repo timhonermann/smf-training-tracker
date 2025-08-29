@@ -27,7 +27,10 @@
         "{workspaceRoot}/eslint.config.mjs"
       ]
     },
-    "@nx/vite:test": { "cache": true, "inputs": ["default", "^production"] }
+    "@nx/vite:test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
+    }
   },
   "generators": {
     "@nx/angular:application": {
@@ -45,5 +48,6 @@
       "unitTestRunner": "vitest"
     }
   },
-  "nxCloudId": "68b1ed679136c54b95a05dab"
+  "nxCloudId": "68b1ed679136c54b95a05dab",
+  "defaultProject": "smf-training-tracker-ui"
 }
