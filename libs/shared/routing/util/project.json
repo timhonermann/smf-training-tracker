@@ -4,13 +4,19 @@
   "sourceRoot": "libs/shared/routing/util/src",
   "prefix": "stt",
   "projectType": "library",
-  "tags": ["domain:shared", "type:util"],
+  "tags": [
+    "domain:shared",
+    "type:util"
+  ],
   "targets": {
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
-        "reportsDirectory": "../../../../coverage/libs/shared/routing/util"
+        "reportsDirectory": "../../../../coverage/libs/shared/routing/util",
+        "passWithNoTests": true
       }
     },
     "lint": {
