@@ -1,0 +1,16 @@
+{
+  "name": "settings-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/settings/feature/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": [
+    "domain:settings",
+    "type:feature"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

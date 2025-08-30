@@ -1,0 +1,13 @@
+{
+  "name": "person-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/person/feature/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": ["domain:person", "type:feature"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

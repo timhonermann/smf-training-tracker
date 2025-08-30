@@ -1,0 +1,31 @@
+.menu-item {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: black;
+  text-decoration: none;
+
+  .label {
+    font-weight: 500;
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  &.active {
+    color: var(--mat-sys-primary);
+    background-color: var(--mat-sys-primary-container)
+  }
+
+  &:hover {
+    color: var(--mat-sys-primary)
+  }
+}

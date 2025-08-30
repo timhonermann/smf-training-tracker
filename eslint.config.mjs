@@ -29,6 +29,10 @@ export default [
               onlyDependOnLibsWithTags: ['domain:dashboard', 'domain:shared'],
             },
             {
+              sourceTag: 'domain:person',
+              onlyDependOnLibsWithTags: ['domain:person', 'domain:shared'],
+            },
+            {
               sourceTag: 'domain:shared',
               onlyDependOnLibsWithTags: ['domain:shared'],
             },

@@ -1,0 +1,16 @@
+{
+  "name": "shell-model",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/shell/model/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": [
+    "domain:shell",
+    "type:model"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

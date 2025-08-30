@@ -18,11 +18,23 @@
       "@stt/features/dashboard/feature": [
         "libs/features/dashboard/feature/src/index.ts"
       ],
+      "@stt/features/person/feature": [
+        "libs/features/person/feature/src/index.ts"
+      ],
+      "@stt/features/settings/feature": [
+        "libs/features/settings/feature/src/index.ts"
+      ],
       "@stt/features/shell/feature": [
         "libs/features/shell/feature/src/index.ts"
       ],
+      "@stt/features/shell/model": ["libs/features/shell/model/src/index.ts"],
       "@stt/features/shell/ui": ["libs/features/shell/ui/src/index.ts"],
-      "@stt/shared/routing/util": ["libs/shared/routing/util/src/index.ts"]
+      "@stt/features/training/feature": [
+        "libs/features/training/feature/src/index.ts"
+      ],
+      "@stt/shared/icon/domain": ["libs/shared/icon/domain/src/index.ts"],
+      "@stt/shared/icon/model": ["libs/shared/icon/model/src/index.ts"],
+      "@stt/shared/routing/model": ["libs/shared/routing/model/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
