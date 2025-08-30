@@ -24,4 +24,8 @@ public class TrainingLocationService {
     return trainingLocationRepository.findAll();
   }
 
+  public void delete(UUID id) {
+    trainingLocationRepository.deleteById(id);
+  }
+
 }
