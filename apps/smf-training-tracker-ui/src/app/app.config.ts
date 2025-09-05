@@ -15,19 +15,24 @@ import {
   MAT_DATE_LOCALE,
   provideNativeDateAdapter,
 } from '@angular/material/core';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { serverUrlInterceptor } from '@stt/shared/http/domain';
+import { APP_CONFIG, AppConfig } from '@stt/shared/config/model';
 
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
-    provideRouter(appRoutes),
-    provideAppInitializer(() => inject(IconService).init()),
-    provideHttpClient(),
-    provideLocale(),
-    provideNativeDateAdapter(),
-  ],
-};
+export function getApplicationConfig(config: AppConfig): ApplicationConfig {
+  return {
+    providers: [
+      { provide: APP_CONFIG, useValue: config },
+      provideBrowserGlobalErrorListeners(),
+      provideZonelessChangeDetection(),
+      provideRouter(appRoutes),
+      provideAppInitializer(() => inject(IconService).init()),
+      provideHttpClient(withInterceptors([serverUrlInterceptor])),
+      provideLocale(),
+      provideNativeDateAdapter(),
+    ],
+  }
+}
 
 function provideLocale(): EnvironmentProviders {
   return makeEnvironmentProviders([

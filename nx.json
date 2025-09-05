@@ -46,7 +46,8 @@
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "vitest"
+      "unitTestRunner": "vitest",
+      "prefix": "stt"
     }
   },
   "nxCloudId": "68b1ed679136c54b95a05dab",

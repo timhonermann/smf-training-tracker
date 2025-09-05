@@ -4,15 +4,19 @@
   "projectType": "application",
   "prefix": "stt",
   "sourceRoot": "apps/smf-training-tracker-ui/src",
-  "tags": ["type:app"],
+  "tags": [
+    "type:app"
+  ],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/smf-training-tracker-ui",
         "browser": "apps/smf-training-tracker-ui/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "apps/smf-training-tracker-ui/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -21,7 +25,9 @@
             "input": "apps/smf-training-tracker-ui/public"
           }
         ],
-        "styles": ["apps/smf-training-tracker-ui/src/styles.scss"]
+        "styles": [
+          "apps/smf-training-tracker-ui/src/styles.scss"
+        ]
       },
       "configurations": {
         "production": {
@@ -42,7 +48,13 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/smf-training-tracker-ui/src/environments/environment.ts",
+              "with": "apps/smf-training-tracker-ui/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -71,7 +83,9 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": [
+        "{options.reportsDirectory}"
+      ],
       "options": {
         "reportsDirectory": "../../coverage/apps/smf-training-tracker-ui"
       }

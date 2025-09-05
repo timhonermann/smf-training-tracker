@@ -36,6 +36,8 @@
       "@stt/features/training/feature": [
         "libs/features/training/feature/src/index.ts"
       ],
+      "@stt/shared/config/model": ["libs/shared/config/model/src/index.ts"],
+      "@stt/shared/http/domain": ["libs/shared/http/domain/src/index.ts"],
       "@stt/shared/icon/domain": ["libs/shared/icon/domain/src/index.ts"],
       "@stt/shared/icon/model": ["libs/shared/icon/model/src/index.ts"],
       "@stt/shared/routing/model": ["libs/shared/routing/model/src/index.ts"]
