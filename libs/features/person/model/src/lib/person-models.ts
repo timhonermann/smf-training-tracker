@@ -1,7 +1,7 @@
 export const role = {
-  RG_LEITER: 'RG_LEITER',
-  SCHUTZDIENSTHELFER: 'SCHUTZDIENSTHELFER',
-  MITGLIED: 'MITGLIED'
+  RG_LEAD: 'RG_LEAD',
+  DECOY: 'DECOY',
+  MEMBER: 'MEMBER'
 } as const
 
 export type Role = (typeof role)[keyof typeof role];

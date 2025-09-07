@@ -8,17 +8,17 @@ import org.springframework.stereotype.Component;
 public class RoleMapper {
   public RoleDto roleToDto(Role role) {
     return switch (role) {
-      case RG_LEITER -> RoleDto.RG_LEITER;
-      case SCHUTZDIENSTHELFER -> RoleDto.SCHUTZDIENSTHELFER;
-      case MITGLIED -> RoleDto.MITGLIED;
+      case RG_LEAD -> RoleDto.RG_LEAD;
+      case DECOY -> RoleDto.DECOY;
+      case MEMBER -> RoleDto.MEMBER;
     };
   }
 
   public Role dtoToRole(RoleDto roleDto) {
     return switch (roleDto) {
-      case RG_LEITER -> Role.RG_LEITER;
-      case SCHUTZDIENSTHELFER -> Role.SCHUTZDIENSTHELFER;
-      case MITGLIED -> Role.MITGLIED;
+      case RG_LEAD -> Role.RG_LEAD;
+      case DECOY -> Role.DECOY;
+      case MEMBER -> Role.MEMBER;
     };
   }
 }

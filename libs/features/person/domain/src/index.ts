@@ -1,1 +1,1 @@
-export * from './lib/person-domain/person-domain';
+export * from './lib/state/person-store';
