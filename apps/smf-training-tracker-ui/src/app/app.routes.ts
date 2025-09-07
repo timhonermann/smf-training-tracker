@@ -19,8 +19,8 @@ export const appRoutes: Route[] = [
       },
       {
         path: featureRoutes.PERSON,
-        loadComponent: () =>
-          import('@stt/features/person/feature').then((c) => c.Person),
+        loadChildren: () =>
+          import('@stt/features/person/feature').then((f) => f.routes),
       },
       {
         path: featureRoutes.SETTINGS,

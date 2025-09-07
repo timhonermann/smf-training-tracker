@@ -6,6 +6,7 @@ export const icons = [
   'location',
   'paw',
   'person',
+  'arrow_back',
 ] as const;
 
 export type IconType = (typeof icons)[number];

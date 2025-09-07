@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 30px;
+  color: white;
+  justify-content: center;
+
+  &.member {
+    background-color: green;
+  }
+
+  &.decoy {
+    background-color: purple;
+  }
+
+  &.rg-lead {
+    background-color: black;
+  }
+}

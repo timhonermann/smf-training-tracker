@@ -10,7 +10,7 @@ export const serverUrlInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   const reqWithServerUrl = req.clone({
-    url: `${config.serverUrl}${req.url}`,
+    url: `${config.serverUrl}/${req.url}`,
   });
 
   return next(reqWithServerUrl);

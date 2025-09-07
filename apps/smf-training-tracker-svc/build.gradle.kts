@@ -1,8 +1,8 @@
 plugins {
   id("java")
-  id("dev.nx.gradle.project-graph") version("0.1.4")
-	id("org.springframework.boot") version "3.5.5"
-	id("io.spring.dependency-management") version "1.1.7"
+  id("dev.nx.gradle.project-graph") version ("0.1.4")
+  id("org.springframework.boot") version "3.5.5"
+  id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "ch.smf"
@@ -10,38 +10,39 @@ version = "0.0.1-SNAPSHOT"
 description = "Tracker for SMF trainings"
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(24)
-	}
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(24)
+  }
 }
 
 configurations {
-	compileOnly {
-		extendsFrom(configurations.annotationProcessor.get())
-	}
+  compileOnly {
+    extendsFrom(configurations.annotationProcessor.get())
+  }
 }
 
 repositories {
-	mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	compileOnly("org.projectlombok:lombok")
-	runtimeOnly("com.h2database:h2")
-	runtimeOnly("org.postgresql:postgresql")
-	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+  implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+  implementation("org.springframework.boot:spring-boot-starter-web")
+  implementation("org.springframework.boot:spring-boot-starter-actuator")
+  compileOnly("org.projectlombok:lombok")
+  runtimeOnly("com.h2database:h2")
+  runtimeOnly("org.postgresql:postgresql")
+  annotationProcessor("org.projectlombok:lombok")
+  testImplementation("org.springframework.boot:spring-boot-starter-test")
+  testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+  useJUnitPlatform()
 }
 
 allprojects {
-    apply {
-        plugin("dev.nx.gradle.project-graph")
-    }
+  apply {
+    plugin("dev.nx.gradle.project-graph")
+  }
 }

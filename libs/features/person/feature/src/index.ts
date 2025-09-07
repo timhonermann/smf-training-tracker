@@ -1,1 +1,1 @@
-export * from './lib/container/person/person';
+export * from './lib/person.routes';

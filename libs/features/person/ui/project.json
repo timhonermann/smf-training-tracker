@@ -1,0 +1,16 @@
+{
+  "name": "person-ui",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/person/ui/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": [
+    "domain:person",
+    "type:ui"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div class="list-container">
+  @for (person of people(); track person.id) {
+    <stt-person-list-item [personData]="person" />
+  }
+</div>
+
+<button matButton="filled" (click)="navigateToPersonCreation()">Create Person</button>

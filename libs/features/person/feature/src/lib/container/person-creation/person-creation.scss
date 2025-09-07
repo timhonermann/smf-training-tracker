@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-button, mat-form-field {
+  width: 100%;
+}
+
+.back-button {
+  width: fit-content;
+}
