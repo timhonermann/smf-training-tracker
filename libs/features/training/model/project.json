@@ -1,0 +1,16 @@
+{
+  "name": "training-model",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/training/model/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": [
+    "domain:training",
+    "type:model"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

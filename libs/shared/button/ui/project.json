@@ -1,0 +1,16 @@
+{
+  "name": "shared-button-ui",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/button/ui/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": [
+    "domain:shared",
+    "type:ui"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

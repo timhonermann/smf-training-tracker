@@ -1,0 +1,9 @@
+<stt-back-button [link]="backLink()" />
+
+<mat-form-field appearance="outline">
+  <mat-label>Location Name</mat-label>
+  <input matInput [formControl]="nameControl
+" />
+</mat-form-field>
+
+<stt-button [isDisabled]="!nameControl.valid" (clicked)="create()">Create</stt-button>

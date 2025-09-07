@@ -1,1 +1,1 @@
-export * from './lib/container/training/training';
+export * from './lib/training.routes';

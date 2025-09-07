@@ -35,9 +35,16 @@
       ],
       "@stt/features/shell/model": ["libs/features/shell/model/src/index.ts"],
       "@stt/features/shell/ui": ["libs/features/shell/ui/src/index.ts"],
+      "@stt/features/training/domain": [
+        "libs/features/training/domain/src/index.ts"
+      ],
       "@stt/features/training/feature": [
         "libs/features/training/feature/src/index.ts"
       ],
+      "@stt/features/training/model": [
+        "libs/features/training/model/src/index.ts"
+      ],
+      "@stt/shared/button/ui": ["libs/shared/button/ui/src/index.ts"],
       "@stt/shared/config/model": ["libs/shared/config/model/src/index.ts"],
       "@stt/shared/http/domain": ["libs/shared/http/domain/src/index.ts"],
       "@stt/shared/icon/domain": ["libs/shared/icon/domain/src/index.ts"],

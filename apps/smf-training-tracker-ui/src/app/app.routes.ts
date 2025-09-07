@@ -14,8 +14,8 @@ export const appRoutes: Route[] = [
       },
       {
         path: featureRoutes.TRAINING,
-        loadComponent: () =>
-          import('@stt/features/training/feature').then((c) => c.Training),
+        loadChildren: () =>
+          import('@stt/features/training/feature').then((f) => f.routes),
       },
       {
         path: featureRoutes.PERSON,

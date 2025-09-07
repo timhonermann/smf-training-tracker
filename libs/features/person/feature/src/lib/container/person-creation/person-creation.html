@@ -1,7 +1,4 @@
-<a class="back-button" matFab extended [routerLink]="'/' + featureRoutes.PERSON">
-  <mat-icon svgIcon="arrow_back" />
-  Back
-</a>
+<stt-back-button [link]="'/' + featureRoutes.PERSON" />
 
 <form [formGroup]="personForm">
   <mat-form-field appearance="outline">
@@ -24,4 +21,4 @@
   </mat-form-field>
 </form>
 
-<button [disabled]="!personForm.valid" class="create-button" matButton="filled" (click)="create()">Create</button>
+<stt-button [isDisabled]="!personForm.valid" (clicked)="create()" class="create-button">Create</stt-button>
