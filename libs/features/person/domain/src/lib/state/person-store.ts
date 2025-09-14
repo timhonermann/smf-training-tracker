@@ -4,14 +4,14 @@ import {
   setEntity,
   withEntities,
 } from '@ngrx/signals/entities';
-import { PersonData } from '@stt/features/person/model';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { exhaustMap } from 'rxjs';
 import { inject } from '@angular/core';
-import { PersonApiClient } from '../services/person-api-client';
 import { tapResponse } from '@ngrx/operators';
 import { Router } from '@angular/router';
 import { featureRoutes } from '@stt/shared/routing/model';
+import { PersonData } from '@stt/shared/person/model';
+import { PersonApiClient } from '@stt/shared/person/domain';
 
 export const PersonStore = signalStore(
   withEntities<PersonData>(),

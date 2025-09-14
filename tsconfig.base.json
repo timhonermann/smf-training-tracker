@@ -24,7 +24,6 @@
       "@stt/features/person/feature": [
         "libs/features/person/feature/src/index.ts"
       ],
-      "@stt/features/person/model": ["libs/features/person/model/src/index.ts"],
       "@stt/features/person/ui": ["libs/features/person/ui/src/index.ts"],
       "@stt/features/person/util": ["libs/features/person/util/src/index.ts"],
       "@stt/features/settings/feature": [
@@ -49,6 +48,8 @@
       "@stt/shared/http/domain": ["libs/shared/http/domain/src/index.ts"],
       "@stt/shared/icon/domain": ["libs/shared/icon/domain/src/index.ts"],
       "@stt/shared/icon/model": ["libs/shared/icon/model/src/index.ts"],
+      "@stt/shared/person/domain": ["libs/shared/person/domain/src/index.ts"],
+      "@stt/shared/person/model": ["libs/shared/person/model/src/index.ts"],
       "@stt/shared/routing/model": ["libs/shared/routing/model/src/index.ts"]
     }
   },

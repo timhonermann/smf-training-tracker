@@ -18,6 +18,10 @@ import {
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { serverUrlInterceptor } from '@stt/shared/http/domain';
 import { APP_CONFIG, AppConfig } from '@stt/shared/config/model';
+import { registerLocaleData } from '@angular/common';
+import deCh from '@angular/common/locales/de-CH';
+
+registerLocaleData(deCh);
 
 export function getApplicationConfig(config: AppConfig): ApplicationConfig {
   return {

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PersonCreationData, PersonData } from '@stt/features/person/model';
 import { HttpClient } from '@angular/common/http';
+import { PersonCreationData, PersonData } from '@stt/shared/person/model';
 
 const API_URI = 'api/v1/people';
 

@@ -1,10 +1,10 @@
 {
-  "name": "person-model",
+  "name": "shared-person-domain",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/features/person/model/src",
+  "sourceRoot": "libs/shared/person/domain/src",
   "prefix": "stt",
   "projectType": "library",
-  "tags": ["domain:person", "type:model"],
+  "tags": ["domain:shared", "type:domain"],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint"

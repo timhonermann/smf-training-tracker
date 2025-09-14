@@ -5,6 +5,7 @@ import ch.smf.smf_training_tracker_svc.repository.TrainingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +22,9 @@ public class TrainingService {
   }
 
   public List<Training> findAll() {
-    return trainingRepository.findAll();
+    return trainingRepository.findAll().stream()
+      .sorted(Comparator.comparing(Training::getScheduledAt).reversed())
+      .toList();
   }
 
   public void delete(final UUID id) {

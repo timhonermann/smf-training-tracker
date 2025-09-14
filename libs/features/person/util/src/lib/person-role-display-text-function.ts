@@ -1,4 +1,5 @@
-import { Role } from '@stt/features/person/model';
+import { Role } from '@stt/shared/person/model';
+
 
 const ROLE_DISPLAY_TEXT_MAP: Record<Role, string> = {
   MEMBER: 'Member',

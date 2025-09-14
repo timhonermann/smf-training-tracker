@@ -4,8 +4,8 @@ import {
   computed,
   input,
 } from '@angular/core';
-import { Role } from '@stt/features/person/model';
 import { getPersonRoleDisplayText } from '@stt/features/person/util';
+import { Role } from '@stt/shared/person/model';
 
 @Component({
   selector: 'stt-person-role-tag',

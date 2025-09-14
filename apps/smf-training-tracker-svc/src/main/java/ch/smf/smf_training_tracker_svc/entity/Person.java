@@ -30,15 +30,6 @@ public class Person {
   @Column(nullable = false)
   private Role role;
 
-  @ManyToMany
-  @JoinTable(
-    schema = "stt",
-    name = "person_training",
-    joinColumns = @JoinColumn(name = "person_id", foreignKey = @ForeignKey(name = "person_training_person")),
-    inverseJoinColumns = @JoinColumn(name = "training_id", foreignKey = @ForeignKey(name = "person_training_training"))
-  )
-  @OrderBy("scheduledAt ASC")
-  @ToString.Exclude
-  @Builder.Default
+  @ManyToMany(mappedBy = "people")
   private Set<Training> trainings = new LinkedHashSet<>();
 }

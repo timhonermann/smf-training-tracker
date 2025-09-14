@@ -11,7 +11,7 @@ import {
 export const routes: Routes = [
   {
     path: '',
-    providers: [TrainingStore],
+    providers: [TrainingStore, TrainingLocationStore],
     children: [
       {
         path: '',
@@ -23,7 +23,6 @@ export const routes: Routes = [
       },
       {
         path: 'location',
-        providers: [TrainingLocationStore],
         children: [
           {
             path: '',

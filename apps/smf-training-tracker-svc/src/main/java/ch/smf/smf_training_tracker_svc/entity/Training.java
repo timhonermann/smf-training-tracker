@@ -27,8 +27,12 @@ public class Training {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   private TrainingLocation location;
 
-  @ManyToMany(mappedBy = "trainings")
-  @ToString.Exclude
-  @Builder.Default
+  @ManyToMany
+  @JoinTable(
+    schema = "stt",
+    name = "person_training",
+    joinColumns = @JoinColumn(name = "training_id"),
+    inverseJoinColumns = @JoinColumn(name = "person_id")
+  )
   private Set<Person> people = new LinkedHashSet<>();
 }

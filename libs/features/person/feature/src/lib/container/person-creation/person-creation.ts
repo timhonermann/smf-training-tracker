@@ -6,12 +6,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { PersonData, role, Role } from '@stt/features/person/model';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { BackButton, Button } from '@stt/shared/button/ui';
+import { PersonData, role, Role } from '@stt/shared/person/model';
 
 @Component({
   selector: 'stt-person-creation',

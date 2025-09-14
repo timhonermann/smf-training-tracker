@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { PersonData } from '@stt/features/person/model';
 import { PersonRoleTag } from '../person-role-tag/person-role-tag';
+import { PersonData } from '@stt/shared/person/model';
 
 @Component({
   selector: 'stt-person-list-item',

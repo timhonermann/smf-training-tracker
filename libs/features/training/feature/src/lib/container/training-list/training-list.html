@@ -1,5 +1,7 @@
 <div class="list-container">
-
+  @for (training of trainings(); track training.id) {
+    <div>{{ training.scheduledAt | date }} - {{ training.location.name }} - Participants: {{ training.people.length }}</div>
+  }
 </div>
 
 <div class="action-group">

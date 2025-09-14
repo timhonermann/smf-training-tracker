@@ -1,5 +1,6 @@
 package ch.smf.smf_training_tracker_svc.controller;
 
+import ch.smf.smf_training_tracker_svc.dto.TrainingCreationDto;
 import ch.smf.smf_training_tracker_svc.dto.TrainingDto;
 import ch.smf.smf_training_tracker_svc.mapper.TrainingMapper;
 import ch.smf.smf_training_tracker_svc.service.TrainingService;
@@ -21,8 +22,8 @@ public class TrainingController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public TrainingDto create(@RequestBody TrainingDto trainingDto) {
-    final var training = trainingService.create(trainingMapper.dtoToTraining(trainingDto));
+  public TrainingDto create(@RequestBody TrainingCreationDto trainingCreationDto) {
+    final var training = trainingService.create(trainingMapper.creationDtoToTraining(trainingCreationDto));
 
     return trainingMapper.trainingToDto(training);
   }
