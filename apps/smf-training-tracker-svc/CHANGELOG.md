@@ -1,0 +1,14 @@
+# 2509.24.12c6c92 (2025-09-24)
+
+### 🚀 Features
+
+- create new trainings ([12c6c92](https://github.com/timhonermann/smf-training-tracker/commit/12c6c92))
+- added person list ([173a113](https://github.com/timhonermann/smf-training-tracker/commit/173a113))
+- create person ([fe087a7](https://github.com/timhonermann/smf-training-tracker/commit/fe087a7))
+- added person model and domain lib ([c3fce4d](https://github.com/timhonermann/smf-training-tracker/commit/c3fce4d))
+- added endpoints for all entities ([37b845d](https://github.com/timhonermann/smf-training-tracker/commit/37b845d))
+- added database and entity setup ([fd47dfe](https://github.com/timhonermann/smf-training-tracker/commit/fd47dfe))
+
+### ❤️ Thank You
+
+- Tim Honermann
