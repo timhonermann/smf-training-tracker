@@ -1,3 +1,7 @@
+# latest (2025-09-24)
+
+This was a version bump only for smf-training-tracker-svc to align it with other projects, there were no code changes.
+
 # 2509.24.7ac99ed (2025-09-24)
 
 This was a version bump only for smf-training-tracker-svc to align it with other projects, there were no code changes.
