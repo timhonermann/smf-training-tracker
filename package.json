@@ -6,8 +6,11 @@
     "start:ui": "nx serve",
     "start:svc": "nx run smf-training-tracker-svc:bootRun",
     "build": "nx build",
-    "test": "nx test"
+    "build:all": "nx run-many -t build",
+    "test": "nx test",
+    "release:svc": "nx release --first-release"
   },
+
   "private": true,
   "dependencies": {
     "@angular/cdk": "^20.2.1",
@@ -34,6 +37,7 @@
     "@angular/language-service": "~20.2.0",
     "@eslint/js": "^9.8.0",
     "@nx/angular": "21.4.0",
+    "@nx/docker": "^21.4.0",
     "@nx/eslint": "21.4.0",
     "@nx/eslint-plugin": "21.4.0",
     "@nx/gradle": "21.4.0",

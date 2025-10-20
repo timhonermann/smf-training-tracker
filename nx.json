@@ -86,6 +86,24 @@
         "classesTargetName": "classes",
         "buildTargetName": "build"
       }
+    },
+    {
+      "plugin": "@nx/docker",
+      "options": {
+        "buildTarget": "docker:build",
+        "runTarget": "docker:run"
+      }
     }
-  ]
+  ],
+  "release": {
+    "projects": ["smf-training-tracker-svc"],
+    "projectsRelationship": "independent",
+    "releaseTagPattern": "release/{projectName}/{version}",
+    "docker": {
+      "skipVersionActions": true
+    },
+    "changelog": {
+      "projectChangelogs": false
+    }
+  }
 }
