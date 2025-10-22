@@ -6,30 +6,27 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # needed if release:svc creates tags/commits
+  contents: write
 
 env:
-  IMAGE: hontech/smf-training-tracker  # <-- change if your image name differs
+  IMAGE: hontech/smf-training-tracker
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      - name: Install deps
-        run: npm ci
+      - run: npm ci
 
-      - name: Configure git (if release bumps versions/tags)
+      - name: Configure git identity (if Nx commits/tags)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -40,15 +37,18 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Run Nx release script
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Run your Nx release script, but force production scheme + auto-yes
+      - name: Run Nx release (Docker, production)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release:svc
+        run: npm run release:svc -- --dockerVersionScheme=production --yes
 
       - name: Read Nx image tag
         id: nx
         run: |
-          echo "Parsing dist/.nx-release.json..."
           TAG=$(node -p "require('./dist/.nx-release.json').versionTag")
           if [ -z "$TAG" ]; then
             echo "Nx release tag not found in dist/.nx-release.json"; exit 1
@@ -59,7 +59,6 @@ jobs:
         run: |
           IMAGE="${{ env.IMAGE }}"
           TAG="${{ steps.nx.outputs.tag }}"
-          # Ensure the versioned image is present locally; pull if Nx published straight to registry
           docker pull "$IMAGE:$TAG" || true
           docker tag "$IMAGE:$TAG" "$IMAGE:latest"
           docker push "$IMAGE:latest"
