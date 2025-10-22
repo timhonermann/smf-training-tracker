@@ -14,6 +14,7 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,11 +41,21 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Run your Nx release script, but force production scheme + auto-yes
-      - name: Run Nx release (Docker, production)
+      - name: Ensure Docker daemon is running (show info)
+        run: |
+          if ! docker info > /dev/null 2>&1; then
+            echo "Docker daemon not running. Trying to start..."
+            sudo service docker start
+          fi
+          echo "Docker version:"
+          docker version
+          echo "Buildx builders:"
+          docker buildx ls
+
+      - name: Run Nx release (force production; auto-yes)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release:svc -- --dockerVersionScheme=production --yes
+        run: npm run release:svc -- --dockerVersionScheme=production --yes --verbose
 
       - name: Read Nx image tag
         id: nx
@@ -54,11 +65,13 @@ jobs:
             echo "Nx release tag not found in dist/.nx-release.json"; exit 1
           fi
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Found Nx image tag: $TAG"
 
       - name: Tag & push :latest
         run: |
           IMAGE="${{ env.IMAGE }}"
           TAG="${{ steps.nx.outputs.tag }}"
+          # In case Nx published directly to the registry, pull it locally before re-tagging
           docker pull "$IMAGE:$TAG" || true
           docker tag "$IMAGE:$TAG" "$IMAGE:latest"
           docker push "$IMAGE:latest"
