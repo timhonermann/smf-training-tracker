@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+.gitignore
+.nx/cache
+**/*.log
+.tmp
+.DS_Store
