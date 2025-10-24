@@ -7,6 +7,7 @@
     "start:svc": "nx run smf-training-tracker-svc:bootRun",
     "build": "nx build",
     "build:all": "nx run-many -t build",
+    "build:svc": "nx build smf-training-tracker-svc",
     "test": "nx test",
     "release:svc": "nx release --first-release"
   },

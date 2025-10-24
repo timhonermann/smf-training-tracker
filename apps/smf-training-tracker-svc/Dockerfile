@@ -1,4 +1,10 @@
-FROM eclipse-temurin:21-jre
-WORKDIR /app
+#FROM eclipse-temurin:21-jre
+#WORKDIR /app
+#COPY build/libs/*.jar app.jar
+#ENTRYPOINT ["java","-jar","/app/app.jar"]
+
+FROM eclipse-temurin:24-jre
+MAINTAINER baeldung.com
+EXPOSE 8080
 COPY build/libs/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]

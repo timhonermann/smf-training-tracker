@@ -16,18 +16,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - name: Install deps
+        run: npm ci
 
-      - name: Configure git identity (if Nx commits/tags)
+      - name: Configure git identity
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -38,40 +41,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Build service
+        run: npm run build:svc
 
-      - name: Ensure Docker daemon is running (show info)
-        run: |
-          if ! docker info > /dev/null 2>&1; then
-            echo "Docker daemon not running. Trying to start..."
-            sudo service docker start
-          fi
-          echo "Docker version:"
-          docker version
-          echo "Buildx builders:"
-          docker buildx ls
-
-      - name: Run Nx release (force production; auto-yes)
+      - name: Release service
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release:svc -- --dockerVersionScheme=production --yes --verbose
-
-      - name: Read Nx image tag
-        id: nx
-        run: |
-          TAG=$(node -p "require('./dist/.nx-release.json').versionTag")
-          if [ -z "$TAG" ]; then
-            echo "Nx release tag not found in dist/.nx-release.json"; exit 1
-          fi
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "Found Nx image tag: $TAG"
-
-      - name: Tag & push :latest
-        run: |
-          IMAGE="${{ env.IMAGE }}"
-          TAG="${{ steps.nx.outputs.tag }}"
-          # In case Nx published directly to the registry, pull it locally before re-tagging
-          docker pull "$IMAGE:$TAG" || true
-          docker tag "$IMAGE:$TAG" "$IMAGE:latest"
-          docker push "$IMAGE:latest"
+        run: npm run release:svc
