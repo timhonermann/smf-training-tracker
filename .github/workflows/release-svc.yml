@@ -55,11 +55,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run release:svc -- --dockerVersionScheme=production --yes
-
-      - name: Add :latest tag to docker image
-        run: |
-          TAG=$(node -p "require('./dist/.nx-release.json').versionTag")
-          echo "Detected tag: $TAG"
-          docker pull "$IMAGE:$TAG" || exit 1
-          docker tag  "$IMAGE:$TAG" "$IMAGE:latest"
-          docker push "$IMAGE:latest"

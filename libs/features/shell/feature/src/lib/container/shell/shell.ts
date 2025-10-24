@@ -28,10 +28,5 @@ export class Shell {
       label: 'People',
       icon: 'person',
     },
-    {
-      path: featureRoutes.SETTINGS,
-      label: 'Settings',
-      icon: 'settings',
-    },
   ];
 }

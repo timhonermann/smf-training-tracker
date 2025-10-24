@@ -23,11 +23,6 @@ export const appRoutes: Route[] = [
           import('@stt/features/person/feature').then((f) => f.routes),
       },
       {
-        path: featureRoutes.SETTINGS,
-        loadComponent: () =>
-          import('@stt/features/settings/feature').then((c) => c.Settings),
-      },
-      {
         path: '**',
         redirectTo: featureRoutes.DASHBOARD,
       },
