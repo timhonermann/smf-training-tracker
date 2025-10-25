@@ -1,36 +1,13 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  inject,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { BackButton, Button } from '@stt/shared/button/ui';
-import {
-  FormBuilder,
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import {
-  MatFormField,
-  MatLabel,
-  MatSuffix,
-} from '@angular/material/form-field';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import {
-  MatDatepicker,
-  MatDatepickerInput,
-  MatDatepickerToggle,
-} from '@angular/material/datepicker';
-import {
-  TrainingLocationStore,
-  TrainingStore,
-} from '@stt/features/training/domain';
+import { MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from '@angular/material/datepicker';
+import { TrainingLocationStore, TrainingStore } from '@stt/features/training/domain';
 import { TrainingCreationData } from '@stt/features/training/model';
 import { MatOption, MatSelect } from '@angular/material/select';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 
 @Component({
@@ -57,7 +34,6 @@ export class TrainingCreation {
   readonly #trainingStore = inject(TrainingStore);
   readonly #locationStore = inject(TrainingLocationStore);
   readonly #fb = inject(FormBuilder);
-  readonly #destroyRef = inject(DestroyRef);
 
   readonly locations = this.#locationStore.entities;
   readonly people = this.#trainingStore.people;
@@ -71,17 +47,12 @@ export class TrainingCreation {
 
   readonly backLink = signal(`/${featureRoutes.TRAINING}`).asReadonly();
 
-  constructor() {
-    this.setSelectedPeopleIds();
-  }
+  readonly #selectedPeopleIds$ = this.form.controls.people.valueChanges.pipe(
+    map((ids) => (!ids ? [] : ids))
+  );
 
-  setSelectedPeopleIds(): void {
-    this.form.controls.people.valueChanges
-      .pipe(
-        takeUntilDestroyed(this.#destroyRef),
-        map((ids) => (!ids ? [] : ids))
-      )
-      .subscribe((ids) => this.#trainingStore.setSelectedPersonIds(ids));
+  constructor() {
+    this.#trainingStore.setSelectedPersonIds(this.#selectedPeopleIds$);
   }
 
   create(): void {

@@ -1,0 +1,14 @@
+<mat-expansion-panel class="expansion-panel">
+  <mat-expansion-panel-header class="header">
+    <mat-panel-title class="title">
+      <div>{{ item().scheduledAt | date }}</div>
+      <div class="description">
+        <div>{{ item().location.name }}</div>
+        <div>Participants: {{ item().people.length }}</div>
+      </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <stt-person-list [people]="item().people" />
+  
+</mat-expansion-panel>

@@ -6,7 +6,11 @@
 }
 
 .list-container {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  gap: 10px;
+  min-height: 0;
   overflow: auto;
 }
 

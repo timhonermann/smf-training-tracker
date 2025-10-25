@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { IconButton } from '@stt/shared/button/ui';
 import { TrainingStore } from '@stt/features/training/domain';
-import { DatePipe } from '@angular/common';
+import { TrainingListItem } from '@stt/features/training/ui';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'stt-training-list',
-  imports: [IconButton, DatePipe],
+  imports: [IconButton, TrainingListItem, MatAccordion],
   templateUrl: './training-list.html',
   styleUrl: './training-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

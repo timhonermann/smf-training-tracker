@@ -5,13 +5,14 @@ import {
   withEntities,
 } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { exhaustMap } from 'rxjs';
+import { exhaustMap, map } from 'rxjs';
 import { inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import { Router } from '@angular/router';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { PersonData } from '@stt/shared/person/model';
 import { PersonApiClient } from '@stt/shared/person/domain';
+import { sortPeopleByRoleThenName } from '@stt/shared/person/util';
 
 export const PersonStore = signalStore(
   withEntities<PersonData>(),
@@ -24,6 +25,7 @@ export const PersonStore = signalStore(
       _loadPeople: rxMethod<void>(
         exhaustMap(() =>
           personApiClient.getAll().pipe(
+            map((people) => sortPeopleByRoleThenName(people)),
             tapResponse({
               next: (people) => patchState(store, setAllEntities(people)),
               error: () => console.error('Error loading people'),

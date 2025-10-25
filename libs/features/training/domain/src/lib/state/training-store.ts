@@ -9,7 +9,7 @@ import { computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { exhaustMap } from 'rxjs';
+import { exhaustMap, map } from 'rxjs';
 import { TrainingApiClient } from '../service/training-api-client';
 import {
   setAllEntities,
@@ -23,6 +23,7 @@ import {
 import { tapResponse } from '@ngrx/operators';
 import { PersonData } from '@stt/shared/person/model';
 import { PersonApiClient } from '@stt/shared/person/domain';
+import { sortPeopleByRoleThenName } from '@stt/shared/person/util';
 
 type TrainingState = {
   people: PersonData[];
@@ -47,6 +48,12 @@ export const TrainingStore = signalStore(
       _loadAll: rxMethod<void>(
         exhaustMap(() =>
           trainingApiClient.getAll().pipe(
+            map((trainings) =>
+              trainings.map<TrainingData>((t) => ({
+                ...t,
+                people: sortPeopleByRoleThenName(t.people),
+              }))
+            ),
             tapResponse({
               next: (trainings) => patchState(store, setAllEntities(trainings)),
               error: () => console.error('Error loading training'),
@@ -82,8 +89,12 @@ export const TrainingStore = signalStore(
         )
       ),
 
-      setSelectedPersonIds: (selectedPersonIds: string[]) =>
-        patchState(store, { selectedPersonIds }),
+      setSelectedPersonIds: rxMethod<string[]>(
+        tapResponse({
+          next: (selectedPersonIds) => patchState(store, { selectedPersonIds }),
+          error: () => console.log('Error setting selected person ids'),
+        })
+      ),
 
       navigateToTrainingLocations: () =>
         router.navigate([featureRoutes.TRAINING, 'location']),

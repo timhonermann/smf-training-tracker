@@ -1,0 +1,13 @@
+{
+  "name": "training-ui",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/training/ui/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": ["domain:training", "type:ui"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

@@ -1,8 +1,8 @@
-<div class="list-container">
+<mat-accordion class="list-container">
   @for (training of trainings(); track training.id) {
-    <div>{{ training.scheduledAt | date }} - {{ training.location.name }} - Participants: {{ training.people.length }}</div>
+    <stt-training-list-item [item]="training" />
   }
-</div>
+</mat-accordion>
 
 <div class="action-group">
   <stt-icon-button icon="add" (clicked)="navigateToTrainingCreation()">Create Training</stt-icon-button>

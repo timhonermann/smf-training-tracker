@@ -50,7 +50,9 @@
       "@stt/shared/icon/model": ["libs/shared/icon/model/src/index.ts"],
       "@stt/shared/person/domain": ["libs/shared/person/domain/src/index.ts"],
       "@stt/shared/person/model": ["libs/shared/person/model/src/index.ts"],
-      "@stt/shared/routing/model": ["libs/shared/routing/model/src/index.ts"]
+      "@stt/shared/routing/model": ["libs/shared/routing/model/src/index.ts"],
+      "@stt/features/training/ui": ["libs/features/training/ui/src/index.ts"],
+      "@stt/shared/person/util": ["libs/shared/person/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
