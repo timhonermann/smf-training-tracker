@@ -1,6 +1,6 @@
 plugins {
   id("java")
-  id("dev.nx.gradle.project-graph") version ("0.1.4")
+  id("dev.nx.gradle.project-graph") version ("0.1.8")
   id("org.springframework.boot") version "3.5.5"
   id("io.spring.dependency-management") version "1.1.7"
 }

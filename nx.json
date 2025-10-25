@@ -98,12 +98,14 @@
   "release": {
     "projects": ["smf-training-tracker-svc"],
     "projectsRelationship": "independent",
-    "releaseTagPattern": "release/{projectName}/{version}",
     "docker": {
       "skipVersionActions": true
     },
     "changelog": {
       "projectChangelogs": false
+    },
+    "releaseTag": {
+      "pattern": "release/{projectName}/{version}"
     }
   }
 }
