@@ -42,7 +42,7 @@ tasks.withType<Test> {
 }
 
 tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
-  mainClass.set("ch.smf.SmfTrainingTrackerSvcApplication")
+  mainClass.set("ch.smf.smf_training_tracker_svc.SmfTrainingTrackerServiceApplication")
 }
 
 allprojects {

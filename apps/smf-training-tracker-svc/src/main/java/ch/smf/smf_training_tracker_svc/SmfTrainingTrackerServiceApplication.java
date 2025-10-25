@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SmfTraininerTrackerServiceApplication {
+public class SmfTrainingTrackerServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SmfTraininerTrackerServiceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(SmfTrainingTrackerServiceApplication.class, args);
+  }
 
 }
