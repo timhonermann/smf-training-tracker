@@ -8,7 +8,7 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { IconService } from '@stt/shared/icon/domain';
 import {
@@ -29,13 +29,13 @@ export function getApplicationConfig(config: AppConfig): ApplicationConfig {
       { provide: APP_CONFIG, useValue: config },
       provideBrowserGlobalErrorListeners(),
       provideZonelessChangeDetection(),
-      provideRouter(appRoutes),
+      provideRouter(appRoutes, withViewTransitions()),
       provideAppInitializer(() => inject(IconService).init()),
       provideHttpClient(withInterceptors([serverUrlInterceptor])),
       provideLocale(),
       provideNativeDateAdapter(),
     ],
-  }
+  };
 }
 
 function provideLocale(): EnvironmentProviders {

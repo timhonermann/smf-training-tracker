@@ -52,7 +52,14 @@
       "@stt/shared/person/model": ["libs/shared/person/model/src/index.ts"],
       "@stt/shared/routing/model": ["libs/shared/routing/model/src/index.ts"],
       "@stt/features/training/ui": ["libs/features/training/ui/src/index.ts"],
-      "@stt/shared/person/util": ["libs/shared/person/util/src/index.ts"]
+      "@stt/shared/person/util": ["libs/shared/person/util/src/index.ts"],
+      "@stt/features/dashboard/domain": [
+        "libs/features/dashboard/domain/src/index.ts"
+      ],
+      "@stt/features/dashboard/ui": ["libs/features/dashboard/ui/src/index.ts"],
+      "@stt/features/dashboard/model": [
+        "libs/features/dashboard/model/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

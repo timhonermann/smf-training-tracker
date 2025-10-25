@@ -15,4 +15,16 @@ public interface TrainingRepository extends JpaRepository<Training, UUID> {
     WHERE t.scheduledAt >= :startDate AND t.scheduledAt <= :endDate
     """)
   int countAllWithin(LocalDate startDate, LocalDate endDate);
+
+  @Query("""
+    SELECT CASE
+             WHEN COUNT(DISTINCT t.id) = 0 THEN 0.0
+             ELSE (1.0 * COUNT(p) / COUNT(DISTINCT t.id))
+           END
+    FROM Training t
+    LEFT JOIN t.people p
+    WHERE t.scheduledAt >= :startDate
+      AND t.scheduledAt <  :endDate
+    """)
+  double averageParticipantsWithin(LocalDate startDate, LocalDate endDate);
 }

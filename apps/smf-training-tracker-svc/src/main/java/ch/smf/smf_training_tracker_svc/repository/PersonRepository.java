@@ -25,5 +25,5 @@ public interface PersonRepository extends JpaRepository<Person, UUID> {
         AND t.scheduledAt <=  :endDate
     ) >= :minAmount
     """)
-  int countAllByTrainingRequirementsReached(LocalDate startDate, LocalDate endDate, int minAmount);
+  int countAllByTrainingsLimitMet(LocalDate startDate, LocalDate endDate, int minAmount);
 }

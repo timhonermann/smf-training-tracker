@@ -1,0 +1,12 @@
+.value {
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.tile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}

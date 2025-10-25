@@ -1,0 +1,13 @@
+{
+  "name": "dashboard-ui",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/dashboard/ui/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": ["domain:dashboard", "type:ui"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

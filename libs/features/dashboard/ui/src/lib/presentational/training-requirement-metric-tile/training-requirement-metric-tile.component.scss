@@ -1,0 +1,42 @@
+.value {
+  font-weight: 800;
+  font-size: 2rem;
+
+  &.reached {
+
+  }
+}
+
+.tile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  .sub-metric-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+    .sub-metric {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      &.met {
+        color: green;
+      }
+
+      &.almost-met {
+        color: orange;
+      }
+
+      h5 {
+        margin: 0;
+      }
+    }
+  }
+}
