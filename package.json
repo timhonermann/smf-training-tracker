@@ -8,6 +8,7 @@
     "build": "nx build",
     "build:all": "nx run-many -t build",
     "build:svc": "nx build smf-training-tracker-svc",
+    "build:ui": "nx build smf-training-tracker-ui",
     "test": "nx test",
     "release:svc": "nx release --first-release"
   },
