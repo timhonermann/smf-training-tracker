@@ -41,6 +41,10 @@ tasks.withType<Test> {
   useJUnitPlatform()
 }
 
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+  mainClass.set("ch.smf.SmfTrainingTrackerSvcApplication")
+}
+
 allprojects {
   apply {
     plugin("dev.nx.gradle.project-graph")
