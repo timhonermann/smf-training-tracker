@@ -1,25 +1,12 @@
-import {
-  patchState,
-  signalStore,
-  withHooks,
-  withMethods,
-  withState,
-} from '@ngrx/signals';
+import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { exhaustMap, map } from 'rxjs';
+import { exhaustMap, map, pipe } from 'rxjs';
 import { TrainingApiClient } from '../service/training-api-client';
-import {
-  setAllEntities,
-  setEntity,
-  withEntities,
-} from '@ngrx/signals/entities';
-import {
-  TrainingCreationData,
-  TrainingData,
-} from '@stt/features/training/model';
+import { setAllEntities, setEntity, withEntities } from '@ngrx/signals/entities';
+import { TrainingCreationData, TrainingData } from '@stt/features/training/model';
 import { tapResponse } from '@ngrx/operators';
 import { PersonData } from '@stt/shared/person/model';
 import { PersonApiClient } from '@stt/shared/person/domain';
@@ -43,7 +30,7 @@ export const TrainingStore = signalStore(
       store,
       trainingApiClient = inject(TrainingApiClient),
       personApiClient = inject(PersonApiClient),
-      router = inject(Router)
+      router = inject(Router),
     ) => ({
       _loadAll: rxMethod<void>(
         exhaustMap(() =>
@@ -52,14 +39,14 @@ export const TrainingStore = signalStore(
               trainings.map<TrainingData>((t) => ({
                 ...t,
                 people: sortPeopleByRoleThenName(t.people),
-              }))
+              })),
             ),
             tapResponse({
               next: (trainings) => patchState(store, setAllEntities(trainings)),
               error: () => console.error('Error loading training'),
-            })
-          )
-        )
+            }),
+          ),
+        ),
       ),
 
       _loadAllPeople: rxMethod<void>(
@@ -68,32 +55,44 @@ export const TrainingStore = signalStore(
             tapResponse({
               next: (people) => patchState(store, { people }),
               error: () => console.error('Error loading people'),
-            })
-          )
-        )
+            }),
+          ),
+        ),
       ),
 
       create: rxMethod<TrainingCreationData>(
-        exhaustMap((creationData) =>
-          trainingApiClient.create(creationData).pipe(
-            tapResponse({
-              next: (training) => {
-                patchState(store, setEntity(training), {
-                  selectedPersonIds: [],
-                });
-                router.navigate([featureRoutes.TRAINING]);
-              },
-              error: () => console.error('Error creating training'),
-            })
-          )
-        )
+        pipe(
+          map((creationData) => ({
+            ...creationData,
+            scheduledAt: new Date(
+              Date.UTC(
+                creationData.scheduledAt.getFullYear(),
+                creationData.scheduledAt.getMonth(),
+                creationData.scheduledAt.getDate(),
+              ),
+            ),
+          })),
+          exhaustMap((creationData) =>
+            trainingApiClient.create(creationData).pipe(
+              tapResponse({
+                next: (training) => {
+                  patchState(store, setEntity(training), {
+                    selectedPersonIds: [],
+                  });
+                  router.navigate([featureRoutes.TRAINING]);
+                },
+                error: () => console.error('Error creating training'),
+              }),
+            ),
+          ),
+        ),
       ),
 
       setSelectedPersonIds: rxMethod<string[]>(
         tapResponse({
           next: (selectedPersonIds) => patchState(store, { selectedPersonIds }),
           error: () => console.log('Error setting selected person ids'),
-        })
+        }),
       ),
 
       navigateToTrainingLocations: () =>
@@ -101,7 +100,7 @@ export const TrainingStore = signalStore(
 
       navigateToTrainingCreation: () =>
         router.navigate([featureRoutes.TRAINING, 'create']),
-    })
+    }),
   ),
   withMethods((store) => ({
     selectedPeople: computed(() => {
@@ -116,5 +115,5 @@ export const TrainingStore = signalStore(
       store._loadAll();
       store._loadAllPeople();
     },
-  })
+  }),
 );
