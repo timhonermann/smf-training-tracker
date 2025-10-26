@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 
 @Service
-public class YearService {
+public class DateService {
 
   public int getCurrentYear() {
     return LocalDate.now().getYear();

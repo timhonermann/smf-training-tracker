@@ -1,1 +1,1 @@
-export * from './lib/container/dashboard/dashboard';
+export * from './lib/dashboard.routes';

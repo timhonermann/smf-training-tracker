@@ -1,6 +1,7 @@
 package ch.smf.smf_training_tracker_svc.repository;
 
 import ch.smf.smf_training_tracker_svc.entity.Person;
+import ch.smf.smf_training_tracker_svc.model.PersonMetricQueryResult;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -26,4 +27,17 @@ public interface PersonRepository extends JpaRepository<Person, UUID> {
     ) >= :minAmount
     """)
   int countAllByTrainingsLimitMet(LocalDate startDate, LocalDate endDate, int minAmount);
+
+  @Query("""
+    SELECT p.id,
+        p.firstName,
+        p.lastName,
+        p.role,
+        COUNT(DISTINCT t) as total
+    FROM Person p
+    LEFT JOIN p.trainings t
+        ON t.scheduledAt BETWEEN :startDate AND :endDate
+    GROUP BY p.id, p.firstName, p.lastName, p.role
+    """)
+  List<PersonMetricQueryResult> findPeopleInclTrainingMetricWithinPeriod(final LocalDate startDate, final LocalDate endDate);
 }

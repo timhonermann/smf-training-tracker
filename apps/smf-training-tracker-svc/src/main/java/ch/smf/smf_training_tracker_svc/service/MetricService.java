@@ -1,11 +1,15 @@
 package ch.smf.smf_training_tracker_svc.service;
 
+import ch.smf.smf_training_tracker_svc.model.PersonMetric;
+import ch.smf.smf_training_tracker_svc.model.PersonMetricQueryResult;
+import ch.smf.smf_training_tracker_svc.model.TrainingRequirementStatus;
 import ch.smf.smf_training_tracker_svc.repository.PersonRepository;
 import ch.smf.smf_training_tracker_svc.repository.TrainingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -39,11 +43,35 @@ public class MetricService {
     return personRepository.countAllByTrainingsLimitMet(startOfYear, endOfYear, ALMOST_MET_REQUIRED_TRAINING_COUNT);
   }
 
+  public List<PersonMetric> findPeopleInclTrainingMetricWithinPeriod(final int year) {
+    LocalDate startOfYear = getStartOfYear(year);
+    LocalDate endOfYear = getEndOfYear(year);
+    final var personMetricQueryResult = personRepository.findPeopleInclTrainingMetricWithinPeriod(startOfYear, endOfYear);
+
+    return personMetricQueryResult.stream()
+      .map(qr -> personMetricQueryResultToPersonMetric(qr, year))
+      .toList();
+  }
+
   private LocalDate getStartOfYear(int year) {
     return LocalDate.of(year, 1, 1);
   }
 
   private LocalDate getEndOfYear(int year) {
     return LocalDate.of(year, 12, 31);
+  }
+
+  private PersonMetric personMetricQueryResultToPersonMetric(final PersonMetricQueryResult personMetricQueryResult, final int year) {
+    final var status = TrainingRequirementStatus.fromTrainingCount(Math.toIntExact(personMetricQueryResult.totalTrainings()));
+
+    return PersonMetric.builder()
+      .id(personMetricQueryResult.id())
+      .firstName(personMetricQueryResult.firstName())
+      .lastName(personMetricQueryResult.lastName())
+      .role(personMetricQueryResult.role())
+      .totalTrainings(Math.toIntExact(personMetricQueryResult.totalTrainings()))
+      .trainingRequirementStatus(status)
+      .year(year)
+      .build();
   }
 }

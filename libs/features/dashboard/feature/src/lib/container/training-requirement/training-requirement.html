@@ -1,0 +1,5 @@
+@for (entity of store.entities(); track entity.id) {
+  <div>{{ entity.id }} - {{ entity.firstName }} {{ entity.lastName }}
+    - {{ entity.totalTrainings }} {{ entity.trainingRequirementStatus }}
+  </div>
+}

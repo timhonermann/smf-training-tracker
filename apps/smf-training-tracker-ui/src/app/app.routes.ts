@@ -9,8 +9,8 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: featureRoutes.DASHBOARD,
-        loadComponent: () =>
-          import('@stt/features/dashboard/feature').then((c) => c.Dashboard),
+        loadChildren: () =>
+          import('@stt/features/dashboard/feature').then((f) => f.routes),
       },
       {
         path: featureRoutes.TRAINING,

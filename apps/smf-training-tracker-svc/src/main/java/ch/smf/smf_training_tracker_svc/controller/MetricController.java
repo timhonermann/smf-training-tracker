@@ -1,15 +1,17 @@
 package ch.smf.smf_training_tracker_svc.controller;
 
+import ch.smf.smf_training_tracker_svc.dto.PersonMetricDto;
 import ch.smf.smf_training_tracker_svc.dto.SummaryMetricDto;
+import ch.smf.smf_training_tracker_svc.dto.YearReference;
 import ch.smf.smf_training_tracker_svc.dto.YearlyMetricDto;
+import ch.smf.smf_training_tracker_svc.mapper.PersonMetricMapper;
+import ch.smf.smf_training_tracker_svc.service.DateService;
 import ch.smf.smf_training_tracker_svc.service.MetricService;
-import ch.smf.smf_training_tracker_svc.service.YearService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,30 +19,46 @@ import org.springframework.web.bind.annotation.RestController;
 public class MetricController {
 
   private final MetricService metricService;
-  private final YearService yearService;
+  private final DateService dateService;
+
+  private final PersonMetricMapper personMetricMapper;
 
   @GetMapping("/summary")
   @ResponseStatus(HttpStatus.OK)
-  public SummaryMetricDto get() {
-    final int currentYear = yearService.getCurrentYear();
-    final int previousYear = yearService.getPreviousYear();
+  public SummaryMetricDto getSummary() {
+    final int currentYear = dateService.getCurrentYear();
+    final int previousYear = dateService.getPreviousYear();
 
     return SummaryMetricDto.builder()
       .currentYear(YearlyMetricDto.builder()
-        .year(yearService.getCurrentYear())
+        .year(dateService.getCurrentYear())
         .totalPeopleTrainingRequirementMet(metricService.getCountTrainingRequirementsMet(currentYear))
         .totalPeopleTrainingRequirementAlmostAlmostMet(metricService.getCountTrainingRequirementsAlmostMet(currentYear))
         .totalTrainings(metricService.getTotalTrainings(currentYear))
         .averageParticipants(metricService.getAverageParticipants(currentYear))
         .build())
       .previousYear(YearlyMetricDto.builder()
-        .year(yearService.getPreviousYear())
+        .year(dateService.getPreviousYear())
         .totalPeopleTrainingRequirementMet(metricService.getCountTrainingRequirementsMet(previousYear))
         .totalPeopleTrainingRequirementAlmostAlmostMet(metricService.getCountTrainingRequirementsAlmostMet(previousYear))
         .totalTrainings(metricService.getTotalTrainings(previousYear))
         .averageParticipants(metricService.getAverageParticipants(previousYear))
         .build())
       .build();
+  }
+
+  @GetMapping("/training-requirements")
+  @ResponseStatus(HttpStatus.OK)
+  public List<PersonMetricDto> getTrainingRequirements(@RequestParam YearReference yearReference) {
+    final int year = switch (yearReference) {
+      case CURRENT -> dateService.getCurrentYear();
+      case PREVIOUS -> dateService.getPreviousYear();
+    };
+    final var personMetrics = metricService.findPeopleInclTrainingMetricWithinPeriod(year);
+
+    return personMetrics.stream()
+      .map(personMetricMapper::mapToDto)
+      .toList();
   }
 
 }
