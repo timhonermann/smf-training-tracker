@@ -14,11 +14,8 @@
   overflow: auto;
 }
 
-.action-group {
-  display: flex;
-  gap: 16px;
-
-  & > * {
-    flex: 1;
-  }
+.person-list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }

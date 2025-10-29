@@ -4,7 +4,7 @@
   }
 </mat-accordion>
 
-<div class="action-group">
-  <stt-icon-button icon="add" (clicked)="navigateToTrainingCreation()">Create Training</stt-icon-button>
-  <stt-icon-button icon="location" (clicked)="navigateToTrainingLocations()">Locations</stt-icon-button>
-</div>
+<stt-training-list-actions
+  (createTrainingClicked)="navigateToTrainingCreation()"
+  (trainingLocationClicked)="navigateToTrainingLocations()"
+/>

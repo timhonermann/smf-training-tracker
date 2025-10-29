@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+
+.person-list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+mat-form-field {
+  width: 100%;
+}

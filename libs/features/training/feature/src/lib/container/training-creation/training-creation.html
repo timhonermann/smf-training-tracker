@@ -1,36 +1,9 @@
 <stt-back-button [link]="backLink()" />
 
-<form [formGroup]="form">
-  <mat-form-field>
-    <mat-label>Training Date</mat-label>
-    <input matInput formControlName="scheduledAt" [matDatepicker]="picker">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Location</mat-label>
-    <mat-select formControlName="location">
-      @for (location of locations(); track location.id) {
-        <mat-option [value]="location.id">{{ location.name }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Participants</mat-label>
-    <mat-select formControlName="people" multiple>
-      @for (person of people(); track person.id) {
-        <mat-option [value]="person.id">{{ person.firstName }} {{ person.lastName }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-</form>
-
-<div class="person-list">
-  @for (selectedPerson of selectedPeople(); track selectedPerson.id) {
-    <div>{{ selectedPerson.firstName }} {{ selectedPerson.lastName }}</div>
-  }
-</div>
-
-<stt-button [isDisabled]="!form.valid" (clicked)="create()">Create</stt-button>
+<stt-training-creation-form
+  [locations]="locationStore.entities()"
+  [people]="trainingStore.people()"
+  [selectedPeople]="trainingStore.selectedPeople()"
+  (createClicked)="trainingStore.create($event)"
+  (selectedPeopleIdsChanged)="trainingStore.setSelectedPersonIds($event)"
+/>

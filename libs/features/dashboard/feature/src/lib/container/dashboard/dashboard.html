@@ -1,15 +1,19 @@
-<h2>{{ store.currentYear.year() }}</h2>
-<stt-training-requirement-metric-tile [totalRequirementMet]="store.currentYear.totalPeopleTrainingRequirementMet()"
-                                      [totalRequirementAlmostMet]="store.currentYear.totalPeopleTrainingRequirementAlmostAlmostMet()" />
-<stt-metric-tile title="Average Participants"
-                 [value]="store.currentYear.averageParticipants()" />
-<stt-metric-tile title="Total Trainings"
-                 [value]="store.currentYear.totalTrainings()" />
+<stt-yearly-metric-group
+  [year]="store.currentYear.year()"
+  [totalRequirementMet]="store.currentYear.totalPeopleTrainingRequirementMet()"
+  [totalRequirementAlmostMet]="
+    store.currentYear.totalPeopleTrainingRequirementAlmostAlmostMet()
+  "
+  [averageParticipants]="store.currentYear.averageParticipants()"
+  [totalTrainings]="store.currentYear.totalTrainings()"
+/>
 
-<h2>{{ store.previousYear.year() }}</h2>
-<stt-training-requirement-metric-tile [totalRequirementMet]="store.previousYear.totalPeopleTrainingRequirementMet()"
-                                      [totalRequirementAlmostMet]="store.previousYear.totalPeopleTrainingRequirementAlmostAlmostMet()" />
-<stt-metric-tile title="Average Participants"
-                 [value]="store.previousYear.averageParticipants()" />
-<stt-metric-tile title="Total Trainings"
-                 [value]="store.previousYear.averageParticipants()" />
+<stt-yearly-metric-group
+  [year]="store.previousYear.year()"
+  [totalRequirementMet]="store.previousYear.totalPeopleTrainingRequirementMet()"
+  [totalRequirementAlmostMet]="
+    store.previousYear.totalPeopleTrainingRequirementAlmostAlmostMet()
+  "
+  [averageParticipants]="store.previousYear.averageParticipants()"
+  [totalTrainings]="store.previousYear.totalTrainings()"
+/>

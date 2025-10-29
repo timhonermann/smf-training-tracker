@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Shell } from './shell';
+import { TrainingListActions } from './training-list-actions.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('Shell', () => {
-  let component: Shell;
-  let fixture: ComponentFixture<Shell>;
+describe('TrainingListActions', () => {
+  let component: TrainingListActions;
+  let fixture: ComponentFixture<TrainingListActions>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Shell],
+      imports: [TrainingListActions],
     })
-      .overrideComponent(Shell, {
+      .overrideComponent(TrainingListActions, {
         set: { imports: [], schemas: [CUSTOM_ELEMENTS_SCHEMA] },
       })
       .compileComponents();
 
-    fixture = TestBed.createComponent(Shell);
+    fixture = TestBed.createComponent(TrainingListActions);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

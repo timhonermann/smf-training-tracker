@@ -1,0 +1,7 @@
+<h2>{{ year() }}</h2>
+<stt-training-requirement-metric-tile
+  [totalRequirementMet]="totalRequirementMet()"
+  [totalRequirementAlmostMet]="totalRequirementAlmostMet()"
+/>
+<stt-metric-tile title="Average Participants" [value]="averageParticipants()" />
+<stt-metric-tile title="Total Trainings" [value]="totalTrainings()" />

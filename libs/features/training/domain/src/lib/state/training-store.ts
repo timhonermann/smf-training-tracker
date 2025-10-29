@@ -101,12 +101,8 @@ export const TrainingStore = signalStore(
         ),
       ),
 
-      setSelectedPersonIds: rxMethod<string[]>(
-        tapResponse({
-          next: (selectedPersonIds) => patchState(store, { selectedPersonIds }),
-          error: () => console.log('Error setting selected person ids'),
-        }),
-      ),
+      setSelectedPersonIds: (selectedPersonIds: string[]) =>
+        patchState(store, { selectedPersonIds }),
 
       navigateToTrainingLocations: () =>
         router.navigate([featureRoutes.TRAINING, 'location']),

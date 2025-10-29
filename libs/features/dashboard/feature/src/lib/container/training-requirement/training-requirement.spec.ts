@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TrainingRequirement } from './training-requirement';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MockProvider } from 'ng-mocks';
+import { TrainingRequirementsStore } from '@stt/features/dashboard/domain';
+import { vitest } from 'vitest';
 
 describe('TrainingRequirement', () => {
   let component: TrainingRequirement;
@@ -8,7 +12,19 @@ describe('TrainingRequirement', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TrainingRequirement],
-    }).compileComponents();
+    })
+      .overrideComponent(TrainingRequirement, {
+        set: {
+          imports: [],
+          providers: [
+            MockProvider(TrainingRequirementsStore, {
+              entities: vitest.fn(),
+            }),
+          ],
+          schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(TrainingRequirement);
     component = fixture.componentInstance;

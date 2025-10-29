@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { IconButton } from '@stt/shared/button/ui';
 import { TrainingStore } from '@stt/features/training/domain';
-import { TrainingListItem } from '@stt/features/training/ui';
+import {
+  TrainingListActions,
+  TrainingListItem,
+} from '@stt/features/training/ui';
 import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'stt-training-list',
-  imports: [IconButton, TrainingListItem, MatAccordion],
+  imports: [TrainingListItem, MatAccordion, TrainingListActions],
   templateUrl: './training-list.html',
   styleUrl: './training-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
