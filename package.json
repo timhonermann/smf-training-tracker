@@ -25,7 +25,8 @@
     "@angular/router": "20.3.7",
     "@ngrx/operators": "^20.0.1",
     "@ngrx/signals": "^20.0.1",
-    "rxjs": "~7.8.0"
+    "rxjs": "~7.8.0",
+    "zone.js": "^0.15.1"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~1.19.1",
@@ -59,6 +60,7 @@
     "eslint-config-prettier": "^10.0.0",
     "jiti": "2.4.2",
     "jsdom": "~22.1.0",
+    "ng-mocks": "^14.14.0",
     "nx": "22.0.1",
     "prettier": "^3.6.2",
     "ts-node": "10.9.1",

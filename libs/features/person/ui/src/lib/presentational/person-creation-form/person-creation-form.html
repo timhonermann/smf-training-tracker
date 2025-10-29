@@ -1,0 +1,22 @@
+<form [formGroup]="personForm">
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="role">
+      <mat-option [value]="role.MEMBER">Member</mat-option>
+      <mat-option [value]="role.DECOY">Decoy</mat-option>
+      <mat-option [value]="role.RG_LEAD">RG Lead</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<stt-button [isDisabled]="!personForm.valid" (clicked)="create()" class="create-button">Create</stt-button>

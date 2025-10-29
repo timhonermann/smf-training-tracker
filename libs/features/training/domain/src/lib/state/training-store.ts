@@ -1,12 +1,25 @@
-import { patchState, signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
+import {
+  patchState,
+  signalStore,
+  withHooks,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { exhaustMap, map, pipe } from 'rxjs';
 import { TrainingApiClient } from '../service/training-api-client';
-import { setAllEntities, setEntity, withEntities } from '@ngrx/signals/entities';
-import { TrainingCreationData, TrainingData } from '@stt/features/training/model';
+import {
+  setAllEntities,
+  setEntity,
+  withEntities,
+} from '@ngrx/signals/entities';
+import {
+  TrainingCreationData,
+  TrainingData,
+} from '@stt/features/training/model';
 import { tapResponse } from '@ngrx/operators';
 import { PersonData } from '@stt/shared/person/model';
 import { PersonApiClient } from '@stt/shared/person/domain';

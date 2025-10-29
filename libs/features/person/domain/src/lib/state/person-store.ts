@@ -10,7 +10,7 @@ import { inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import { Router } from '@angular/router';
 import { featureRoutes } from '@stt/shared/routing/model';
-import { PersonData } from '@stt/shared/person/model';
+import { PersonCreationData, PersonData } from '@stt/shared/person/model';
 import { PersonApiClient } from '@stt/shared/person/domain';
 import { sortPeopleByRoleThenName } from '@stt/shared/person/util';
 
@@ -20,7 +20,7 @@ export const PersonStore = signalStore(
     (
       store,
       personApiClient = inject(PersonApiClient),
-      router = inject(Router)
+      router = inject(Router),
     ) => ({
       _loadPeople: rxMethod<void>(
         exhaustMap(() =>
@@ -29,12 +29,12 @@ export const PersonStore = signalStore(
             tapResponse({
               next: (people) => patchState(store, setAllEntities(people)),
               error: () => console.error('Error loading people'),
-            })
-          )
-        )
+            }),
+          ),
+        ),
       ),
 
-      create: rxMethod<PersonData>(
+      create: rxMethod<PersonCreationData>(
         exhaustMap((person) =>
           personApiClient.create(person).pipe(
             tapResponse({
@@ -43,18 +43,18 @@ export const PersonStore = signalStore(
                 router.navigate([featureRoutes.PERSON]);
               },
               error: () => console.error('Error creating person'),
-            })
-          )
-        )
+            }),
+          ),
+        ),
       ),
 
       navigateToPersonCreation: () =>
         router.navigate([featureRoutes.PERSON, 'create']),
-    })
+    }),
   ),
   withHooks({
     onInit: (store) => {
       store._loadPeople();
     },
-  })
+  }),
 );

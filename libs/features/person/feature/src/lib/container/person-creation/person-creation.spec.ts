@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PersonCreation } from './person-creation';
+import { PersonStore } from '@stt/features/person/domain';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MockProvider } from 'ng-mocks';
 
 describe('PersonCreation', () => {
   let component: PersonCreation;
@@ -8,7 +11,12 @@ describe('PersonCreation', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PersonCreation],
-    }).compileComponents();
+      providers: [MockProvider(PersonStore)],
+    })
+      .overrideComponent(PersonCreation, {
+        set: { imports: [], schemas: [CUSTOM_ELEMENTS_SCHEMA] },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(PersonCreation);
     component = fixture.componentInstance;

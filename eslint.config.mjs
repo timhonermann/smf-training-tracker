@@ -50,6 +50,7 @@ export default [
             {
               sourceTag: 'type:ui',
               onlyDependOnLibsWithTags: [
+                'type:ui',
                 'type:layout',
                 'type:util',
                 'type:model',
