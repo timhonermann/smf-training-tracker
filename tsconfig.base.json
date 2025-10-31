@@ -25,7 +25,6 @@
         "libs/features/person/feature/src/index.ts"
       ],
       "@stt/features/person/ui": ["libs/features/person/ui/src/index.ts"],
-      "@stt/features/person/util": ["libs/features/person/util/src/index.ts"],
       "@stt/features/settings/feature": [
         "libs/features/settings/feature/src/index.ts"
       ],

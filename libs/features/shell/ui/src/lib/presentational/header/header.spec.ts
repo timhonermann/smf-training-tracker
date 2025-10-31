@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Header } from './header';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('Header', () => {
   let component: Header;
@@ -8,7 +9,11 @@ describe('Header', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Header],
-    }).compileComponents();
+    })
+      .overrideComponent(Header, {
+        set: { imports: [], schemas: [CUSTOM_ELEMENTS_SCHEMA] },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(Header);
     component = fixture.componentInstance;

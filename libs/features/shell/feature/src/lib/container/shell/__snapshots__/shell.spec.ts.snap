@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Shell > menuItems 1`] = `
+[
+  {
+    "icon": "dashboard",
+    "label": "Dashboard",
+    "path": "dashboard",
+  },
+  {
+    "icon": "paw",
+    "label": "Training",
+    "path": "training",
+  },
+  {
+    "icon": "person",
+    "label": "People",
+    "path": "person",
+  },
+]
+`;

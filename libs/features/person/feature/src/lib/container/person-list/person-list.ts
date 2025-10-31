@@ -11,11 +11,5 @@ import { Button } from '@stt/shared/button/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PersonList {
-  private readonly store = inject(PersonStore);
-
-  readonly people = this.store.entities;
-
-  navigateToPersonCreation(): void {
-    this.store.navigateToPersonCreation();
-  }
+  readonly store = inject(PersonStore);
 }

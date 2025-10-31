@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Shell } from './shell';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { expect } from 'vitest';
 
 describe('Shell', () => {
   let component: Shell;
@@ -22,5 +23,9 @@ describe('Shell', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('menuItems', () => {
+    expect(component.menuItems()).toMatchSnapshot();
   });
 });

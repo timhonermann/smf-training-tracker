@@ -17,8 +17,4 @@ export class Button {
   readonly isDisabled = input(false);
 
   readonly clicked = output();
-
-  click(): void {
-    this.clicked.emit();
-  }
 }

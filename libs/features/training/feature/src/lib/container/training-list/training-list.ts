@@ -14,15 +14,5 @@ import { MatAccordion } from '@angular/material/expansion';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrainingList {
-  readonly #store = inject(TrainingStore);
-
-  readonly trainings = this.#store.entities;
-
-  navigateToTrainingLocations(): void {
-    this.#store.navigateToTrainingLocations();
-  }
-
-  navigateToTrainingCreation(): void {
-    this.#store.navigateToTrainingCreation();
-  }
+  readonly store = inject(TrainingStore);
 }

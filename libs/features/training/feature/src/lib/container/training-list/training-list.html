@@ -1,10 +1,10 @@
 <mat-accordion class="list-container">
-  @for (training of trainings(); track training.id) {
+  @for (training of store.entities(); track training.id) {
     <stt-training-list-item [item]="training" />
   }
 </mat-accordion>
 
 <stt-training-list-actions
-  (createTrainingClicked)="navigateToTrainingCreation()"
-  (trainingLocationClicked)="navigateToTrainingLocations()"
+  (createTrainingClicked)="store.navigateToTrainingCreation()"
+  (trainingLocationClicked)="store.navigateToTrainingLocations()"
 />

@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MockComponent, MockDirective } from 'ng-mocks';
 import { MatDatepickerInput } from '@angular/material/datepicker';
 import { MatSelect } from '@angular/material/select';
+import { describe, expect } from 'vitest';
 
 describe('TrainingCreationForm', () => {
   let component: TrainingCreationForm;
@@ -36,5 +37,31 @@ describe('TrainingCreationForm', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('create', () => {
+    it('should emit createClicked output with TrainingCreationData from form', () => {
+      // arrange
+      const scheduledAt = new Date(Date.UTC(2025, 10, 31));
+      const locationId = 'xy123';
+      const personIds = ['p1', 'p2'];
+      const emitSpy = vi.spyOn(component.createClicked, 'emit');
+
+      component.form.setValue({
+        scheduledAt,
+        location: locationId,
+        people: personIds,
+      });
+
+      // act
+      component.create();
+
+      // assert
+      expect(emitSpy).toHaveBeenCalledExactlyOnceWith({
+        scheduledAt,
+        locationId,
+        personIds,
+      });
+    });
   });
 });

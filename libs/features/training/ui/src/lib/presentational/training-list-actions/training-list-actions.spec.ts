@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TrainingListActions } from './training-list-actions.component';
+import { TrainingListActions } from './training-list-actions';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('TrainingListActions', () => {

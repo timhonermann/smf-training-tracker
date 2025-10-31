@@ -1,9 +1,11 @@
 <stt-back-button [link]="backLink()" />
 
 <div class="list-container">
-  @for (location of locations(); track location.id) {
+  @for (location of store.entities(); track location.id) {
     <div class="list-item">{{ location.name }}</div>
   }
 </div>
 
-<stt-button (clicked)="navigateToTrainingLocationCreation()">Create Training Location</stt-button>
+<stt-button (clicked)="store.navigateToTrainingLocationCreation()"
+  >Create Training Location</stt-button
+>

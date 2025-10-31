@@ -16,13 +16,15 @@ import { tapResponse } from '@ngrx/operators';
 import { Router } from '@angular/router';
 import { featureRoutes } from '@stt/shared/routing/model';
 
+export type TrainingLocationStore = InstanceType<typeof TrainingLocationStore>;
+
 export const TrainingLocationStore = signalStore(
   withEntities<TrainingLocationData>(),
   withMethods(
     (
       store,
       trainingLocationApiClient = inject(TrainingLocationApiClient),
-      router = inject(Router)
+      router = inject(Router),
     ) => ({
       _loadAll: rxMethod<void>(
         exhaustMap(() =>
@@ -31,9 +33,9 @@ export const TrainingLocationStore = signalStore(
               next: (trainingLocations) =>
                 patchState(store, setAllEntities(trainingLocations)),
               error: () => console.error('Error loading training locations'),
-            })
-          )
-        )
+            }),
+          ),
+        ),
       ),
 
       create: rxMethod<TrainingLocationCreationData>(
@@ -45,18 +47,18 @@ export const TrainingLocationStore = signalStore(
                 router.navigate([featureRoutes.TRAINING, 'location']);
               },
               error: () => console.error('Error creating training location'),
-            })
-          )
-        )
+            }),
+          ),
+        ),
       ),
 
       navigateToTrainingLocationCreation: () =>
         router.navigate([featureRoutes.TRAINING, 'location', 'create']),
-    })
+    }),
   ),
   withHooks({
     onInit: (store) => {
       store._loadAll();
     },
-  })
+  }),
 );

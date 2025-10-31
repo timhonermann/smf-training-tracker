@@ -1,15 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-} from '@angular/core';
-import { getPersonRoleDisplayText } from '@stt/features/person/util';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Role } from '@stt/shared/person/model';
+import { RoleDisplayTextPipe } from '../../pipe/role-display-text-pipe';
 
 @Component({
   selector: 'stt-person-role-tag',
-  imports: [],
+  imports: [RoleDisplayTextPipe],
   templateUrl: './person-role-tag.html',
   styleUrl: './person-role-tag.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,8 +16,4 @@ import { Role } from '@stt/shared/person/model';
 })
 export class PersonRoleTag {
   readonly role = input.required<Role>();
-
-  protected readonly roleDisplayText = computed(() =>
-    getPersonRoleDisplayText(this.role())
-  );
 }

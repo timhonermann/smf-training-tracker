@@ -3,7 +3,7 @@ import { Dashboard } from './dashboard';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MockProvider } from 'ng-mocks';
 import { SummaryMetricStore } from '@stt/features/dashboard/domain';
-import { vitest } from 'vitest';
+import { vi } from 'vitest';
 
 describe('Dashboard', () => {
   let component: Dashboard;
@@ -19,18 +19,18 @@ describe('Dashboard', () => {
           providers: [
             MockProvider(SummaryMetricStore, {
               currentYear: {
-                year: vitest.fn(),
-                totalPeopleTrainingRequirementMet: vitest.fn(),
-                totalPeopleTrainingRequirementAlmostAlmostMet: vitest.fn(),
-                totalTrainings: vitest.fn(),
-                averageParticipants: vitest.fn(),
+                year: vi.fn(),
+                totalPeopleTrainingRequirementMet: vi.fn(),
+                totalPeopleTrainingRequirementAlmostAlmostMet: vi.fn(),
+                totalTrainings: vi.fn(),
+                averageParticipants: vi.fn(),
               },
               previousYear: {
-                year: vitest.fn(),
-                totalPeopleTrainingRequirementMet: vitest.fn(),
-                totalPeopleTrainingRequirementAlmostAlmostMet: vitest.fn(),
-                totalTrainings: vitest.fn(),
-                averageParticipants: vitest.fn(),
+                year: vi.fn(),
+                totalPeopleTrainingRequirementMet: vi.fn(),
+                totalPeopleTrainingRequirementAlmostAlmostMet: vi.fn(),
+                totalTrainings: vi.fn(),
+                averageParticipants: vi.fn(),
               },
             }),
           ],

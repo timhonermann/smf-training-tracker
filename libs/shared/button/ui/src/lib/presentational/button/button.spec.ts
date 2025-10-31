@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Button } from './button';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('Button', () => {
   let component: Button;
@@ -8,7 +9,11 @@ describe('Button', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Button],
-    }).compileComponents();
+    })
+      .overrideComponent(Button, {
+        set: { imports: [], schemas: [CUSTOM_ELEMENTS_SCHEMA] },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(Button);
     component = fixture.componentInstance;

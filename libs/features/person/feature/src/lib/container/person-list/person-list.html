@@ -1,7 +1,9 @@
 <div class="list-container">
-  @for (person of people(); track person.id) {
+  @for (person of store.entities(); track person.id) {
     <stt-person-list-item [personData]="person" />
   }
 </div>
 
-<stt-button (clicked)="navigateToPersonCreation()">Create Person</stt-button>
+<stt-button (clicked)="store.navigateToPersonCreation()"
+  >Create Person</stt-button
+>

@@ -19,8 +19,4 @@ export class IconButton {
   readonly icon = input.required<IconType>();
 
   readonly clicked = output();
-
-  click(): void {
-    this.clicked.emit();
-  }
 }

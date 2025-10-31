@@ -16,13 +16,7 @@ import { featureRoutes } from '@stt/shared/routing/model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrainingLocationList {
-  readonly #store = inject(TrainingLocationStore);
-
-  readonly locations = this.#store.entities;
+  readonly store = inject(TrainingLocationStore);
 
   readonly backLink = signal(`/${featureRoutes.TRAINING}`).asReadonly();
-
-  navigateToTrainingLocationCreation(): void {
-    this.#store.navigateToTrainingLocationCreation();
-  }
 }

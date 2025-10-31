@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Header, Menu } from '@stt/features/shell/ui';
 import { RouterOutlet } from '@angular/router';
-import { MenuItemData } from '@stt/features/shell/model';
 import { featureRoutes } from '@stt/shared/routing/model';
+import { MenuItemData } from '@stt/features/shell/model';
 
 @Component({
   selector: 'stt-shell',
@@ -12,7 +12,7 @@ import { featureRoutes } from '@stt/shared/routing/model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Shell {
-  readonly menuItems: MenuItemData[] = [
+  readonly menuItems = signal<MenuItemData[]>([
     {
       path: featureRoutes.DASHBOARD,
       label: 'Dashboard',
@@ -28,5 +28,5 @@ export class Shell {
       label: 'People',
       icon: 'person',
     },
-  ];
+  ]).asReadonly();
 }

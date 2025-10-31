@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Bullet } from './bullet';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { role } from '@stt/shared/person/model';
 
 describe('Bullet', () => {
   let component: Bullet;
@@ -8,9 +10,14 @@ describe('Bullet', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Bullet],
-    }).compileComponents();
+    })
+      .overrideComponent(Bullet, {
+        set: { imports: [], schemas: [CUSTOM_ELEMENTS_SCHEMA] },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(Bullet);
+    fixture.componentRef.setInput('personRole', role.MEMBER);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
