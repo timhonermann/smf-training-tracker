@@ -17,7 +17,7 @@ describe('Person', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(Person);
-    fixture.componentRef.setInput('personTrainingRequirementMetric', {
+    fixture.componentRef.setInput('person', {
       firstName: '',
       lastName: '',
       totalTrainings: 0,
