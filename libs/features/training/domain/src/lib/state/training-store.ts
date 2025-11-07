@@ -12,8 +12,8 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { exhaustMap, map, pipe } from 'rxjs';
 import { TrainingApiClient } from '../service/training-api-client';
 import {
+  prependEntity,
   setAllEntities,
-  setEntity,
   withEntities,
 } from '@ngrx/signals/entities';
 import {
@@ -89,7 +89,7 @@ export const TrainingStore = signalStore(
             trainingApiClient.create(creationData).pipe(
               tapResponse({
                 next: (training) => {
-                  patchState(store, setEntity(training), {
+                  patchState(store, prependEntity(training), {
                     selectedPersonIds: [],
                   });
                   router.navigate([featureRoutes.TRAINING]);

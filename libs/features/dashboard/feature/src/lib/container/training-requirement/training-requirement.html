@@ -1,5 +1,5 @@
-@for (entity of store.entities(); track entity.id) {
-  <div>{{ entity.id }} - {{ entity.firstName }} {{ entity.lastName }}
-    - {{ entity.totalTrainings }} {{ entity.trainingRequirementStatus }}
-  </div>
-}
+<stt-training-requirement-header (searchInputChanged)="store.setSearchValue($event)" />
+
+<stt-training-requirement-title />
+
+<stt-training-requirement-list class="list" [people]="store.peopleSortedByTrainings()" />

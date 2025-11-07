@@ -3,7 +3,6 @@ import { TrainingRequirement } from './training-requirement';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MockProvider } from 'ng-mocks';
 import { TrainingRequirementsStore } from '@stt/features/dashboard/domain';
-import { vitest } from 'vitest';
 
 describe('TrainingRequirement', () => {
   let component: TrainingRequirement;
@@ -18,7 +17,7 @@ describe('TrainingRequirement', () => {
           imports: [],
           providers: [
             MockProvider(TrainingRequirementsStore, {
-              entities: vitest.fn(),
+              peopleSortedByTrainings: vi.fn(),
             }),
           ],
           schemas: [CUSTOM_ELEMENTS_SCHEMA],
