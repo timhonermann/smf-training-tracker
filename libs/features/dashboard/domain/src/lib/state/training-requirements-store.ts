@@ -2,18 +2,17 @@ import {
   patchState,
   signalStore,
   withComputed,
-  withHooks,
   withMethods,
   withState,
 } from '@ngrx/signals';
 import { setAllEntities, withEntities } from '@ngrx/signals/entities';
 import {
   PersonTrainingRequirementMetric,
-  yearReference,
   YearReference,
+  YearReferenceParam,
 } from '@stt/features/dashboard/model';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { exhaustMap } from 'rxjs';
+import { exhaustMap, filter, map, pipe } from 'rxjs';
 import { computed, inject } from '@angular/core';
 import { MetricsApiClient } from '../service/metrics-api-client';
 import { tapResponse } from '@ngrx/operators';
@@ -46,7 +45,15 @@ export const TrainingRequirementsStore = signalStore(
     });
 
     const peopleSortedByTrainings = computed(() =>
-      _filteredPeople().sort((a, b) => b.totalTrainings - a.totalTrainings),
+      _filteredPeople().sort((a, b) => {
+        const diff = b.totalTrainings - a.totalTrainings;
+
+        if (diff !== 0) {
+          return diff;
+        }
+
+        return a.firstName.localeCompare(b.firstName);
+      }),
     );
 
     return {
@@ -54,18 +61,22 @@ export const TrainingRequirementsStore = signalStore(
     };
   }),
   withMethods((store, metricsApiClient = inject(MetricsApiClient)) => ({
-    _load: rxMethod<YearReference>(
-      exhaustMap((yearReference) =>
-        metricsApiClient.getTrainingRequirements(yearReference).pipe(
-          tapResponse({
-            next: (personTrainingRequirementMetrics) =>
-              patchState(
-                store,
-                setAllEntities(personTrainingRequirementMetrics),
-              ),
-            error: () =>
-              console.error('Error loading training requirement metrics'),
-          }),
+    load: rxMethod<YearReferenceParam | undefined>(
+      pipe(
+        filter(Boolean),
+        map(yearReferenceParamToYearReference),
+        exhaustMap((yearReference) =>
+          metricsApiClient.getTrainingRequirements(yearReference).pipe(
+            tapResponse({
+              next: (personTrainingRequirementMetrics) =>
+                patchState(
+                  store,
+                  setAllEntities(personTrainingRequirementMetrics),
+                ),
+              error: () =>
+                console.error('Error loading training requirement metrics'),
+            }),
+          ),
         ),
       ),
     ),
@@ -73,9 +84,16 @@ export const TrainingRequirementsStore = signalStore(
     setSearchValue: (searchValue: string | null) =>
       patchState(store, { searchValue }),
   })),
-  withHooks({
-    onInit: (store) => {
-      store._load(yearReference.CURRENT);
-    },
-  }),
 );
+
+const YEAR_REFERENCE_PARAM_YEAR_REFERENCE_MAP: Record<
+  YearReferenceParam,
+  YearReference
+> = {
+  current: 'CURRENT',
+  previous: 'PREVIOUS',
+};
+
+const yearReferenceParamToYearReference = (
+  yearReferenceParam: YearReferenceParam,
+): YearReference => YEAR_REFERENCE_PARAM_YEAR_REFERENCE_MAP[yearReferenceParam];

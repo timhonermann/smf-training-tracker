@@ -2,4 +2,8 @@
   padding: 24px;
   background-color: var(--mat-sys-primary-container);
   border-radius: 20px;
+
+  &.clickable:hover {
+    background-color: var(--mat-sys-primary-fixed-dim);
+  }
 }

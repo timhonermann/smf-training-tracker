@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { TrainingRequirementsStore } from '@stt/features/dashboard/domain';
 import {
   TrainingRequirementHeader,
@@ -6,6 +6,7 @@ import {
   TrainingRequirementTitle
 } from '@stt/features/dashboard/ui';
 import { ReactiveFormsModule } from '@angular/forms';
+import { YearReferenceParam } from '@stt/features/dashboard/model';
 
 @Component({
   selector: 'stt-training-requirement',
@@ -22,4 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class TrainingRequirement {
   readonly store = inject(TrainingRequirementsStore);
+
+  readonly year = input<YearReferenceParam>();
+
+  constructor() {
+    this.store.load(this.year);
+  }
 }

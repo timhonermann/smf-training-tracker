@@ -17,6 +17,7 @@ describe('TrainingRequirement', () => {
           imports: [],
           providers: [
             MockProvider(TrainingRequirementsStore, {
+              load: vi.fn(),
               peopleSortedByTrainings: vi.fn(),
             }),
           ],

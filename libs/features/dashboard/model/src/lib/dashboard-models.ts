@@ -25,12 +25,24 @@ export type TrainingRequirementStatus =
 export const yearReference = {
   CURRENT: 'CURRENT',
   PREVIOUS: 'PREVIOUS',
-};
+} as const;
 
 export type YearReference = (typeof yearReference)[keyof typeof yearReference];
+
+export type YearReferenceParam = Lowercase<YearReference>;
+
+export const yearReferenceParam: Record<
+  keyof typeof yearReference,
+  YearReferenceParam
+> = {
+  CURRENT: 'current',
+  PREVIOUS: 'previous',
+};
 
 export type PersonTrainingRequirementMetric = PersonData & {
   year: number;
   totalTrainings: number;
   trainingRequirementStatus: TrainingRequirementStatus;
 };
+
+export const YEAR_REFERENCE_PARAM_NAME = 'year';

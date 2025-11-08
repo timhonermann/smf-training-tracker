@@ -2,6 +2,7 @@
 <stt-training-requirement-metric-tile
   [totalRequirementMet]="totalRequirementMet()"
   [totalRequirementAlmostMet]="totalRequirementAlmostMet()"
+  (clicked)="clicked.emit()"
 />
 <stt-metric-tile title="Average Participants" [value]="averageParticipants()" />
 <stt-metric-tile title="Total Trainings" [value]="totalTrainings()" />

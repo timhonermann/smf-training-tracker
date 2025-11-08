@@ -3,6 +3,7 @@ import { PersonCreationForm } from './person-creation-form';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MockComponent } from 'ng-mocks';
 import { MatSelect } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('PersonCreationForm', () => {
   let component: PersonCreationForm;
@@ -14,7 +15,7 @@ describe('PersonCreationForm', () => {
     })
       .overrideComponent(PersonCreationForm, {
         set: {
-          imports: [MockComponent(MatSelect)],
+          imports: [ReactiveFormsModule, MockComponent(MatSelect)],
           schemas: [CUSTOM_ELEMENTS_SCHEMA],
         },
       })

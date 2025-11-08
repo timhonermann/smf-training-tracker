@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuItem } from './menu-item';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MockDirective } from 'ng-mocks';
+import { RouterLink } from '@angular/router';
 
 describe('MenuItem', () => {
   let component: MenuItem;
@@ -11,7 +13,10 @@ describe('MenuItem', () => {
       imports: [MenuItem],
     })
       .overrideComponent(MenuItem, {
-        set: { imports: [], schemas: [CUSTOM_ELEMENTS_SCHEMA] },
+        set: {
+          imports: [MockDirective(RouterLink)],
+          schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        },
       })
       .compileComponents();
 

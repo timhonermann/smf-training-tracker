@@ -6,6 +6,7 @@
   "
   [averageParticipants]="store.currentYear.averageParticipants()"
   [totalTrainings]="store.currentYear.totalTrainings()"
+  (clicked)="store.navigateToTrainingRequirementsCurrentYear()"
 />
 
 <stt-yearly-metric-group
@@ -16,4 +17,5 @@
   "
   [averageParticipants]="store.previousYear.averageParticipants()"
   [totalTrainings]="store.previousYear.totalTrainings()"
+  (clicked)="store.navigateToTrainingRequirementsPreviousYear()"
 />

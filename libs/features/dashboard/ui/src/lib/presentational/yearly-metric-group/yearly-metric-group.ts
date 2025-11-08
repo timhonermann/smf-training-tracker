@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { MetricTile } from '../metric-tile/metric-tile';
 import { TrainingRequirementMetricTile } from '../training-requirement-metric-tile/training-requirement-metric-tile.component';
 
@@ -15,4 +20,6 @@ export class YearlyMetricGroup {
   readonly totalRequirementAlmostMet = input.required<number>();
   readonly averageParticipants = input.required<number>();
   readonly totalTrainings = input.required<number>();
+
+  readonly clicked = output();
 }

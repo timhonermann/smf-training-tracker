@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { Tile } from '../tile/tile';
 
 @Component({
@@ -11,4 +16,6 @@ import { Tile } from '../tile/tile';
 export class TrainingRequirementMetricTile {
   readonly totalRequirementMet = input.required<number>();
   readonly totalRequirementAlmostMet = input.required<number>();
+
+  readonly clicked = output();
 }

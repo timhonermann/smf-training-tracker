@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TrainingRequirementHeader } from './training-requirement-header';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('TrainingRequirementHeader', () => {
   let component: TrainingRequirementHeader;
@@ -9,10 +9,13 @@ describe('TrainingRequirementHeader', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TrainingRequirementHeader, ReactiveFormsModule, FormsModule],
+      imports: [TrainingRequirementHeader],
     })
       .overrideComponent(TrainingRequirementHeader, {
-        set: { imports: [], schemas: [CUSTOM_ELEMENTS_SCHEMA] },
+        set: {
+          imports: [ReactiveFormsModule],
+          schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        },
       })
       .compileComponents();
 

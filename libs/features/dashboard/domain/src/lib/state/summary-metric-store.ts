@@ -1,4 +1,10 @@
-import { SummaryMetric } from '@stt/features/dashboard/model';
+import {
+  SummaryMetric,
+  YEAR_REFERENCE_PARAM_NAME,
+  yearReference,
+  YearReference,
+  yearReferenceParam,
+} from '@stt/features/dashboard/model';
 import {
   patchState,
   signalStore,
@@ -11,6 +17,7 @@ import { MetricsApiClient } from '../service/metrics-api-client';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { exhaustMap } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 type SummaryMetricState = SummaryMetric;
 
@@ -33,18 +40,50 @@ const initialState: SummaryMetricState = {
 
 export const SummaryMetricStore = signalStore(
   withState<SummaryMetricState>(initialState),
-  withMethods((store, metricsApiClient = inject(MetricsApiClient)) => ({
-    _load: rxMethod<void>(
-      exhaustMap(() =>
-        metricsApiClient.getSummary().pipe(
-          tapResponse({
-            next: (summaryMetric) => patchState(store, summaryMetric),
-            error: () => console.error('Error loading summary metric'),
-          }),
+  withMethods(
+    (
+      store,
+      metricsApiClient = inject(MetricsApiClient),
+      router = inject(Router),
+      activatedRoute = inject(ActivatedRoute),
+    ) => {
+      const _load = rxMethod<void>(
+        exhaustMap(() =>
+          metricsApiClient.getSummary().pipe(
+            tapResponse({
+              next: (summaryMetric) => patchState(store, summaryMetric),
+              error: () => console.error('Error loading summary metric'),
+            }),
+          ),
         ),
-      ),
-    ),
-  })),
+      );
+
+      const _navigateToTrainingRequirements = (year: YearReference) => {
+        const queryParams: Params = {
+          [YEAR_REFERENCE_PARAM_NAME]: yearReferenceParam[year],
+        };
+
+        return router.navigate(['training-requirement'], {
+          queryParams,
+          relativeTo: activatedRoute,
+        });
+      };
+
+      const navigateToTrainingRequirementsCurrentYear = () => {
+        return _navigateToTrainingRequirements(yearReference.CURRENT);
+      };
+
+      const navigateToTrainingRequirementsPreviousYear = () => {
+        return _navigateToTrainingRequirements(yearReference.PREVIOUS);
+      };
+
+      return {
+        _load,
+        navigateToTrainingRequirementsCurrentYear,
+        navigateToTrainingRequirementsPreviousYear,
+      };
+    },
+  ),
   withHooks({
     onInit: (store) => {
       store._load();

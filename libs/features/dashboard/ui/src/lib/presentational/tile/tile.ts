@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'stt-tile',
@@ -6,5 +6,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './tile.html',
   styleUrl: './tile.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.clickable]': 'isClickable()',
+  },
 })
-export class Tile {}
+export class Tile {
+  readonly isClickable = input(false);
+}
