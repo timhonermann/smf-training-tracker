@@ -36,6 +36,7 @@ const initialState: TrainingState = {
 };
 
 export const TrainingStore = signalStore(
+  { providedIn: 'root' },
   withState<TrainingState>(initialState),
   withEntities<TrainingData>(),
   withMethods(

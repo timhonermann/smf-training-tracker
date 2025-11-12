@@ -19,6 +19,7 @@ import { featureRoutes } from '@stt/shared/routing/model';
 export type TrainingLocationStore = InstanceType<typeof TrainingLocationStore>;
 
 export const TrainingLocationStore = signalStore(
+  { providedIn: 'root' },
   withEntities<TrainingLocationData>(),
   withMethods(
     (

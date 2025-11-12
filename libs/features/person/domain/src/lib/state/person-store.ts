@@ -15,6 +15,7 @@ import { PersonApiClient } from '@stt/shared/person/domain';
 import { sortPeopleByRoleThenName } from '@stt/shared/person/util';
 
 export const PersonStore = signalStore(
+  { providedIn: 'root' },
   withEntities<PersonData>(),
   withMethods(
     (
