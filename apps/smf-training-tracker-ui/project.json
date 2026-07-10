@@ -4,15 +4,12 @@
   "projectType": "application",
   "prefix": "stt",
   "sourceRoot": "apps/smf-training-tracker-ui/src",
-  "tags": [
-    "type:app"
-  ],
+  "tags": ["type:app"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/smf-training-tracker-ui",
         "browser": "apps/smf-training-tracker-ui/src/main.ts",
@@ -25,9 +22,7 @@
             "input": "apps/smf-training-tracker-ui/public"
           }
         ],
-        "styles": [
-          "apps/smf-training-tracker-ui/src/styles.scss"
-        ]
+        "styles": ["apps/smf-training-tracker-ui/src/styles.scss"]
       },
       "configurations": {
         "production": {
@@ -56,12 +51,12 @@
             }
           ]
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "serve": {
       "continuous": true,
       "executor": "@angular/build:dev-server",
+      "defaultConfiguration": "development",
       "configurations": {
         "production": {
           "buildTarget": "smf-training-tracker-ui:build:production"
@@ -69,8 +64,7 @@
         "development": {
           "buildTarget": "smf-training-tracker-ui:build:development"
         }
-      },
-      "defaultConfiguration": "development"
+      }
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
@@ -82,10 +76,8 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/vite:test",
-      "outputs": [
-        "{options.reportsDirectory}"
-      ],
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
       "options": {
         "reportsDirectory": "../../coverage/apps/smf-training-tracker-ui"
       }
