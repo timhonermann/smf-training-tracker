@@ -34,5 +34,6 @@ public class Training {
     joinColumns = @JoinColumn(name = "training_id"),
     inverseJoinColumns = @JoinColumn(name = "person_id")
   )
+  @Builder.Default
   private Set<Person> people = new LinkedHashSet<>();
 }
