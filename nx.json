@@ -28,7 +28,7 @@
         "{workspaceRoot}/eslint.config.mjs"
       ]
     },
-    "@nx/vite:test": {
+    "@nx/vitest:test": {
       "cache": true,
       "inputs": ["default", "^production"]
     }
@@ -38,7 +38,7 @@
       "e2eTestRunner": "none",
       "linter": "eslint",
       "style": "scss",
-      "unitTestRunner": "vitest"
+      "unitTestRunner": "vitest-analog"
     },
     "@nx/angular:component": {
       "style": "scss",
@@ -46,7 +46,7 @@
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "vitest",
+      "unitTestRunner": "vitest-analog",
       "prefix": "stt"
     }
   },
@@ -63,7 +63,6 @@
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build",
-        "testTargetName": "vite:test",
         "serveTargetName": "serve",
         "devTargetName": "dev",
         "previewTargetName": "preview",
@@ -93,6 +92,12 @@
         "buildTarget": "docker:build",
         "runTarget": "docker:run"
       }
+    },
+    {
+      "plugin": "@nx/vitest",
+      "options": {
+        "testTargetName": "vite:test"
+      }
     }
   ],
   "release": {
@@ -107,5 +112,6 @@
     "releaseTag": {
       "pattern": "release/{projectName}/{version}"
     }
-  }
+  },
+  "analytics": false
 }

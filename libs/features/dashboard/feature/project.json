@@ -7,7 +7,7 @@
   "tags": ["domain:dashboard", "type:feature"],
   "targets": {
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nx/vitest:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
         "reportsDirectory": "../../../../coverage/libs/features/dashboard/feature"
