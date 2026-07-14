@@ -19,7 +19,7 @@ import {
   MAT_DATE_LOCALE,
   provideNativeDateAdapter,
 } from '@angular/material/core';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { serverUrlInterceptor } from '@stt/shared/http/domain';
 import { APP_CONFIG, AppConfig } from '@stt/shared/config/model';
 import { registerLocaleData } from '@angular/common';
@@ -39,7 +39,7 @@ export function getApplicationConfig(config: AppConfig): ApplicationConfig {
         withViewTransitions(),
       ),
       provideAppInitializer(() => inject(IconService).init()),
-      provideHttpClient(withInterceptors([serverUrlInterceptor])),
+      provideHttpClient(withXhr(), withInterceptors([serverUrlInterceptor])),
       provideLocale(),
       provideNativeDateAdapter(),
     ],
