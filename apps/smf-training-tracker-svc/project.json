@@ -4,6 +4,15 @@
   "sourceRoot": "apps/smf-training-tracker-svc/src",
   "projectType": "application",
   "targets": {
+    "bootRun": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "cache": false,
+      "options": {
+        "cwd": "apps/smf-training-tracker-svc",
+        "command": "gradlew.bat bootRun"
+      }
+    },
     "docker:run": {
       "options": {
         "args": ["-p", "8080:8080"]
