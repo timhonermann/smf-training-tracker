@@ -9,7 +9,7 @@
     "build:all": "nx run-many -t build",
     "build:svc": "nx build smf-training-tracker-svc",
     "build:ui": "nx build smf-training-tracker-ui",
-    "test": "nx test",
+    "test:ui": "nx run-many -t vite:test -- --passWithNoTests",
     "release:svc": "nx release --first-release"
   },
   "private": true,
@@ -48,6 +48,7 @@
     "@nx/vitest": "23.1.0",
     "@nx/web": "23.1.0",
     "@nx/workspace": "23.1.0",
+    "@oxc-project/runtime": "^0.115.0",
     "@schematics/angular": "22.0.6",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.8",
