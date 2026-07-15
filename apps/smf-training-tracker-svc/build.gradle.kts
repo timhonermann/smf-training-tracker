@@ -1,9 +1,6 @@
-import org.springframework.boot.gradle.tasks.bundling.BootJar
-import org.springframework.boot.gradle.tasks.run.BootRun
-
 plugins {
   id("java")
-  id("dev.nx.gradle.project-graph") version ("0.1.22")
+  id("dev.nx.gradle.project-graph") version ("0.1.24")
   id("org.springframework.boot") version "3.5.5"
   id("io.spring.dependency-management") version "1.1.7"
 }
@@ -44,16 +41,8 @@ tasks.withType<Test> {
   useJUnitPlatform()
 }
 
-tasks.named<BootJar>("bootJar") {
-  mainClass.set(
-    "ch.smf.smf_training_tracker_svc.SmfTrainingTrackerServiceApplication"
-  )
-}
-
-tasks.named<BootRun>("bootRun") {
-  mainClass.set(
-    "ch.smf.smf_training_tracker_svc.SmfTrainingTrackerServiceApplication"
-  )
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+  mainClass.set("ch.smf.smf_training_tracker_svc.SmfTrainingTrackerServiceApplication")
 }
 
 allprojects {

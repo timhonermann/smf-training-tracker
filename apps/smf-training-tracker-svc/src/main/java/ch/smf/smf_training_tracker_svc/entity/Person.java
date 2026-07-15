@@ -31,5 +31,6 @@ public class Person {
   private Role role;
 
   @ManyToMany(mappedBy = "people")
+  @Builder.Default
   private Set<Training> trainings = new LinkedHashSet<>();
 }
