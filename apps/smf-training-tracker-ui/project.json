@@ -21,7 +21,10 @@
             "input": "apps/smf-training-tracker-ui/public"
           }
         ],
-        "styles": ["apps/smf-training-tracker-ui/src/styles.scss"]
+        "styles": ["apps/smf-training-tracker-ui/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/shared/branding/theme/src/lib"]
+        }
       },
       "configurations": {
         "production": {

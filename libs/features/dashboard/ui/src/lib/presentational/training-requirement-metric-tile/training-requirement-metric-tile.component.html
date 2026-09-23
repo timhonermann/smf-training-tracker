@@ -1,14 +1,25 @@
 <a role="button" tabindex="0" (click)="clicked.emit()">
   <stt-tile class="tile-content" [isClickable]="true">
-    <div><strong>Training Requirement</strong></div>
+    <div class="header">
+      <div class="title">
+        <span>Training Requirement</span>
+      </div>
+      <div class="detail-link">
+        <span>Details</span> <mat-icon fontIcon="chevron_right" />
+      </div>
+    </div>
     <div class="sub-metric-container reached">
       <div class="sub-metric met">
         <h5>Reached</h5>
-        <div class="value"><strong>{{ totalRequirementMet() }}</strong></div>
+        <div class="value">
+          <strong>{{ totalRequirementMet() }}</strong>
+        </div>
       </div>
       <div class="sub-metric almost-met">
         <h5>Almost Reached</h5>
-        <div class="value"><strong>{{ totalRequirementAlmostMet() }}</strong></div>
+        <div class="value">
+          <strong>{{ totalRequirementAlmostMet() }}</strong>
+        </div>
       </div>
     </div>
   </stt-tile>
