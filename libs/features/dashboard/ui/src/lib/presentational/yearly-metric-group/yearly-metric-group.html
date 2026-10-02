@@ -4,5 +4,15 @@
   [totalRequirementAlmostMet]="totalRequirementAlmostMet()"
   (clicked)="clicked.emit()"
 />
-<stt-metric-tile title="Average Participants" [value]="averageParticipants()" />
-<stt-metric-tile title="Total Trainings" [value]="totalTrainings()" />
+<stt-metric-tile
+  title="Ø Participants"
+  description="Average participants per training"
+  [value]="averageParticipants()"
+  icon="group"
+/>
+<stt-metric-tile
+  title="Total Trainings"
+  description="Number of training sessions conducted"
+  [value]="totalTrainings()"
+  icon="paw"
+/>

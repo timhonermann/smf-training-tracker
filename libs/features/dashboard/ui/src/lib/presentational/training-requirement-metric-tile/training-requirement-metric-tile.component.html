@@ -10,15 +10,21 @@
     </div>
     <div class="sub-metric-container reached">
       <div class="sub-metric met">
-        <h5>Reached</h5>
-        <div class="value">
-          <strong>{{ totalRequirementMet() }}</strong>
+        <mat-icon class="icon" fontIcon="check_circle" />
+        <div class="info">
+          <div class="value">
+            <strong>{{ totalRequirementMet() }}</strong>
+          </div>
+          <span>Reached</span>
         </div>
       </div>
       <div class="sub-metric almost-met">
-        <h5>Almost Reached</h5>
-        <div class="value">
-          <strong>{{ totalRequirementAlmostMet() }}</strong>
+        <mat-icon class="icon" fontIcon="pending" />
+        <div class="info">
+          <div class="value">
+            <strong>{{ totalRequirementAlmostMet() }}</strong>
+          </div>
+          <span>Almost Reached</span>
         </div>
       </div>
     </div>
