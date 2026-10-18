@@ -1,5 +1,53 @@
+@use 'sass:color';
+@use 'colors';
+
 :host {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.year-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.year {
+  margin: 0;
+  color: colors.$text;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.current-year-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: color.change(colors.$red, $alpha: 0.1);
+  color: colors.$red;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: colors.$text-secondary;
+  font-size: 0.875rem;
+}
+
+.calendar-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
 }

@@ -1,4 +1,15 @@
-<h2>{{ year() }}</h2>
+<header class="year-heading">
+  <div class="title-row">
+    <h2 class="year">{{ year() }}</h2>
+    @if (isCurrentYear()) {
+      <span class="current-year-pill">Current Year</span>
+    }
+  </div>
+  <div class="date-range">
+    <mat-icon class="calendar-icon" svgIcon="calendar" />
+    <span>{{ dateRange() }}</span>
+  </div>
+</header>
 <stt-training-requirement-metric-tile
   [totalRequirementReached]="totalRequirementReached()"
   [totalRequirementAlmostReached]="totalRequirementAlmostReached()"
