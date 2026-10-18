@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+import static ch.smf.smf_training_tracker_svc.model.TrainingRequirementStatus.ALMOST_REACHED_MIN_TRAININGS;
+import static ch.smf.smf_training_tracker_svc.model.TrainingRequirementStatus.REACHED_MIN_TRAININGS;
+
 @Service
 @RequiredArgsConstructor
 public class MetricService {
-
-  private static final int REQUIRED_TRAININGS_COUNT = 26;
-  private static final int ALMOST_REACHED_REQUIRED_TRAINING_COUNT = REQUIRED_TRAININGS_COUNT - 6;
 
   private final PersonRepository personRepository;
   private final TrainingRepository trainingRepository;
@@ -33,14 +33,16 @@ public class MetricService {
     LocalDate startOfYear = getStartOfYear(year);
     LocalDate endOfYear = getEndOfYear(year);
 
-    return personRepository.countAllByTrainingsLimitReached(startOfYear, endOfYear, REQUIRED_TRAININGS_COUNT);
+    return personRepository.countAllByTrainingCountWithin(
+      startOfYear, endOfYear, REACHED_MIN_TRAININGS, Integer.MAX_VALUE);
   }
 
   public int getCountTrainingRequirementsAlmostReached(final int year) {
     LocalDate startOfYear = getStartOfYear(year);
     LocalDate endOfYear = getEndOfYear(year);
 
-    return personRepository.countAllByTrainingsLimitReached(startOfYear, endOfYear, ALMOST_REACHED_REQUIRED_TRAINING_COUNT);
+    return personRepository.countAllByTrainingCountWithin(
+      startOfYear, endOfYear, ALMOST_REACHED_MIN_TRAININGS, REACHED_MIN_TRAININGS);
   }
 
   public List<PersonMetric> findPeopleInclTrainingMetricWithinPeriod(final int year) {
