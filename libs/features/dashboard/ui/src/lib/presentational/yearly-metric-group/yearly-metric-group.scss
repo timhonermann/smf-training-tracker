@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'breakpoints';
 @use 'colors';
 
 // Mobile: requirement tile full width, metric tiles in two columns.
@@ -7,16 +8,16 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 
-  @media (max-width: 359.98px) {
+  @media (max-width: #{breakpoints.$narrow-phone - 0.02px}) {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: breakpoints.$tablet) {
     gap: 16px;
   }
 
   // Desktop: one row per year, about 2fr / 1fr / 1fr.
-  @media (min-width: 1024px) {
+  @media (min-width: breakpoints.$desktop) {
     grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
@@ -27,7 +28,7 @@ stt-training-requirement-metric-tile {
   grid-column: 1 / -1;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: breakpoints.$desktop) {
   stt-training-requirement-metric-tile {
     grid-column: auto;
   }

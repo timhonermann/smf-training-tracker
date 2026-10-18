@@ -1,3 +1,4 @@
+@use 'breakpoints';
 @use 'colors';
 
 :host {
@@ -16,7 +17,7 @@
 
 // In the two-column phone layout the tile is too narrow for icon and text
 // side by side, so the icon moves above the text.
-@container (max-width: 219.98px) {
+@container (max-width: #{breakpoints.$tile-compact - 0.02px}) {
   .tile-content {
     flex-direction: column;
     gap: 8px;
@@ -63,7 +64,7 @@
   line-height: 1.1;
 }
 
-@media (min-width: 600px) {
+@media (min-width: breakpoints.$tablet) {
   .tile-content {
     gap: 16px;
   }
