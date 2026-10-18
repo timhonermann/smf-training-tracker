@@ -215,6 +215,44 @@ describe('Dashboard', () => {
     });
   });
 
+  describe('metric tiles', () => {
+    /** The value shown on the metric tile titled `title` in each year group. */
+    const metricValues = (page: HTMLElement, title: string): string[] =>
+      Array.from(page.querySelectorAll('stt-yearly-metric-group')).map(
+        (yearGroup) => {
+          const tile = Array.from(
+            yearGroup.querySelectorAll('stt-metric-tile'),
+          ).find(
+            (candidate) => text(candidate.querySelector('.title')) === title,
+          );
+          if (!tile) throw new Error(`No metric tile titled "${title}"`);
+          return text(tile.querySelector('.value'));
+        },
+      );
+
+    it('shows the average participants of each year', async () => {
+      const page = await renderDashboard(
+        summaryMetric({
+          currentYear: { averageParticipants: 9.25 },
+          previousYear: { averageParticipants: 6 },
+        }),
+      );
+
+      expect(metricValues(page, 'Ø Participants')).toEqual(['9.3', '6']);
+    });
+
+    it('shows the Total Trainings of each year', async () => {
+      const page = await renderDashboard(
+        summaryMetric({
+          currentYear: { totalTrainings: 57 },
+          previousYear: { totalTrainings: 31 },
+        }),
+      );
+
+      expect(metricValues(page, 'Total Trainings')).toEqual(['57', '31']);
+    });
+  });
+
   describe('year heading', () => {
     it('marks only the current year with the Current Year pill', async () => {
       const page = await renderDashboard();
