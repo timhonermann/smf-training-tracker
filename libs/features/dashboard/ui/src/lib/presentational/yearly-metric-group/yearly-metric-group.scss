@@ -34,11 +34,15 @@ stt-training-requirement-metric-tile {
   }
 }
 
+// Year and pill on the left, date range right-aligned on the same row. When
+// the row is too narrow, the date range wraps below the year.
 .year-heading {
   margin-bottom: 4px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
 }
 
 .title-row {
@@ -72,6 +76,7 @@ stt-training-requirement-metric-tile {
   gap: 6px;
   color: colors.$text-secondary;
   font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .calendar-icon {
