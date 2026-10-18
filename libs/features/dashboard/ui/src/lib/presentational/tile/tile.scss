@@ -1,7 +1,8 @@
-@use "colors";
+@use 'colors';
 
 :host {
-  padding: 24px;
+  display: block;
+  padding: 16px;
   background-color: colors.$surface;
   border: 1px solid colors.$border;
   border-radius: 16px;
@@ -23,5 +24,9 @@
     box-shadow:
       0 2px 4px rgb(33 29 26 / 6%),
       0 8px 20px rgb(33 29 26 / 10%);
+  }
+
+  @media (min-width: 600px) {
+    padding: 24px;
   }
 }

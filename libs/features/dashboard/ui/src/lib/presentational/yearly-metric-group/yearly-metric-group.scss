@@ -1,13 +1,40 @@
 @use 'sass:color';
 @use 'colors';
 
+// Mobile: requirement tile full width, metric tiles in two columns.
 :host {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: 359.98px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 600px) {
+    gap: 16px;
+  }
+
+  // Desktop: one row per year, about 2fr / 1fr / 1fr.
+  @media (min-width: 1024px) {
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+.year-heading,
+stt-training-requirement-metric-tile {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  stt-training-requirement-metric-tile {
+    grid-column: auto;
+  }
 }
 
 .year-heading {
+  margin-bottom: 4px;
   display: flex;
   flex-direction: column;
   gap: 4px;

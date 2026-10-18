@@ -2,10 +2,12 @@
 
 :host {
   display: block;
+  min-width: 0;
 }
 
 .click-target {
   display: block;
+  height: 100%;
   border-radius: 16px;
   outline: none;
   cursor: pointer;
@@ -19,8 +21,10 @@
 
 .tile-content {
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   gap: 16px;
+  height: 100%;
 }
 
 .header {
