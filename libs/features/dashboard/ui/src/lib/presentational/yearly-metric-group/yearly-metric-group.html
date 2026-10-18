@@ -1,7 +1,7 @@
 <h2>{{ year() }}</h2>
 <stt-training-requirement-metric-tile
-  [totalRequirementMet]="totalRequirementMet()"
-  [totalRequirementAlmostMet]="totalRequirementAlmostMet()"
+  [totalRequirementReached]="totalRequirementReached()"
+  [totalRequirementAlmostReached]="totalRequirementAlmostReached()"
   (clicked)="clicked.emit()"
 />
 <stt-metric-tile

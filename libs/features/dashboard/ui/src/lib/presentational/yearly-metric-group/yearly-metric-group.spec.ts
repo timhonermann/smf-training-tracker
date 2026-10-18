@@ -17,8 +17,8 @@ describe('YearlyMetricGroup', () => {
 
     fixture = TestBed.createComponent(YearlyMetricGroup);
     fixture.componentRef.setInput('year', 0);
-    fixture.componentRef.setInput('totalRequirementMet', 0);
-    fixture.componentRef.setInput('totalRequirementAlmostMet', 0);
+    fixture.componentRef.setInput('totalRequirementReached', 0);
+    fixture.componentRef.setInput('totalRequirementAlmostReached', 0);
     fixture.componentRef.setInput('averageParticipants', 0);
     fixture.componentRef.setInput('totalTrainings', 0);
     component = fixture.componentInstance;

@@ -16,7 +16,7 @@ import java.util.List;
 public class MetricService {
 
   private static final int REQUIRED_TRAININGS_COUNT = 26;
-  private static final int ALMOST_MET_REQUIRED_TRAINING_COUNT = REQUIRED_TRAININGS_COUNT - 6;
+  private static final int ALMOST_REACHED_REQUIRED_TRAINING_COUNT = REQUIRED_TRAININGS_COUNT - 6;
 
   private final PersonRepository personRepository;
   private final TrainingRepository trainingRepository;
@@ -29,18 +29,18 @@ public class MetricService {
     return trainingRepository.averageParticipantsWithin(getStartOfYear(year), getEndOfYear(year));
   }
 
-  public int getCountTrainingRequirementsMet(final int year) {
+  public int getCountTrainingRequirementsReached(final int year) {
     LocalDate startOfYear = getStartOfYear(year);
     LocalDate endOfYear = getEndOfYear(year);
 
-    return personRepository.countAllByTrainingsLimitMet(startOfYear, endOfYear, REQUIRED_TRAININGS_COUNT);
+    return personRepository.countAllByTrainingsLimitReached(startOfYear, endOfYear, REQUIRED_TRAININGS_COUNT);
   }
 
-  public int getCountTrainingRequirementsAlmostMet(final int year) {
+  public int getCountTrainingRequirementsAlmostReached(final int year) {
     LocalDate startOfYear = getStartOfYear(year);
     LocalDate endOfYear = getEndOfYear(year);
 
-    return personRepository.countAllByTrainingsLimitMet(startOfYear, endOfYear, ALMOST_MET_REQUIRED_TRAINING_COUNT);
+    return personRepository.countAllByTrainingsLimitReached(startOfYear, endOfYear, ALMOST_REACHED_REQUIRED_TRAINING_COUNT);
   }
 
   public List<PersonMetric> findPeopleInclTrainingMetricWithinPeriod(final int year) {

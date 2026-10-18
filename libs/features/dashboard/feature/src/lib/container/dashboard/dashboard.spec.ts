@@ -20,15 +20,15 @@ describe('Dashboard', () => {
             MockProvider(SummaryMetricStore, {
               currentYear: {
                 year: vi.fn(),
-                totalPeopleTrainingRequirementMet: vi.fn(),
-                totalPeopleTrainingRequirementAlmostAlmostMet: vi.fn(),
+                totalPeopleTrainingRequirementReached: vi.fn(),
+                totalPeopleTrainingRequirementAlmostReached: vi.fn(),
                 totalTrainings: vi.fn(),
                 averageParticipants: vi.fn(),
               },
               previousYear: {
                 year: vi.fn(),
-                totalPeopleTrainingRequirementMet: vi.fn(),
-                totalPeopleTrainingRequirementAlmostAlmostMet: vi.fn(),
+                totalPeopleTrainingRequirementReached: vi.fn(),
+                totalPeopleTrainingRequirementAlmostReached: vi.fn(),
                 totalTrainings: vi.fn(),
                 averageParticipants: vi.fn(),
               },

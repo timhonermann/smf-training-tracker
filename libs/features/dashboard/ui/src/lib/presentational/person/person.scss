@@ -5,15 +5,15 @@
   color: white;
   border-radius: 8px;
 
-  &.met {
+  &.reached {
     background-color: green;
   }
 
-  &.almost-met {
+  &.almost-reached {
     background-color: darkorange;
   }
 
-  &.unmet {
+  &.not-reached {
     background-color: indianred;
   }
 }

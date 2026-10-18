@@ -59,12 +59,12 @@ a:active {
       padding: 24px 12px;
       border-radius: 15px;
 
-      &.met {
+      &.reached {
         background-color: colors.$success-background;
         color: colors.$success;
       }
 
-      &.almost-met {
+      &.almost-reached {
         background-color: colors.$warning-background;
         color: colors.$warning;
       }

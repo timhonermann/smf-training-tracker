@@ -24,15 +24,15 @@ type SummaryMetricState = SummaryMetric;
 const initialState: SummaryMetricState = {
   currentYear: {
     year: 0,
-    totalPeopleTrainingRequirementMet: 0,
-    totalPeopleTrainingRequirementAlmostAlmostMet: 0,
+    totalPeopleTrainingRequirementReached: 0,
+    totalPeopleTrainingRequirementAlmostReached: 0,
     totalTrainings: 0,
     averageParticipants: 0,
   },
   previousYear: {
     year: 0,
-    totalPeopleTrainingRequirementMet: 0,
-    totalPeopleTrainingRequirementAlmostAlmostMet: 0,
+    totalPeopleTrainingRequirementReached: 0,
+    totalPeopleTrainingRequirementAlmostReached: 0,
     totalTrainings: 0,
     averageParticipants: 0,
   },

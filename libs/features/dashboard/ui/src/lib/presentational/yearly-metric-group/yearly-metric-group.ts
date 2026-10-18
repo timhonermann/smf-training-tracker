@@ -16,8 +16,8 @@ import { TrainingRequirementMetricTile } from '../training-requirement-metric-ti
 })
 export class YearlyMetricGroup {
   readonly year = input.required<number>();
-  readonly totalRequirementMet = input.required<number>();
-  readonly totalRequirementAlmostMet = input.required<number>();
+  readonly totalRequirementReached = input.required<number>();
+  readonly totalRequirementAlmostReached = input.required<number>();
   readonly averageParticipants = input.required<number>();
   readonly totalTrainings = input.required<number>();
 

@@ -11,12 +11,12 @@ import {
   styleUrl: './person.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.met]':
-      'person().trainingRequirementStatus === trainingRequirementStatus.MET',
-    '[class.almost-met]':
-      'person().trainingRequirementStatus === trainingRequirementStatus.ALMOST_MET',
-    '[class.unmet]':
-      'person().trainingRequirementStatus === trainingRequirementStatus.UNMET',
+    '[class.reached]':
+      'person().trainingRequirementStatus === trainingRequirementStatus.REACHED',
+    '[class.almost-reached]':
+      'person().trainingRequirementStatus === trainingRequirementStatus.ALMOST_REACHED',
+    '[class.not-reached]':
+      'person().trainingRequirementStatus === trainingRequirementStatus.NOT_REACHED',
   },
 })
 export class Person {

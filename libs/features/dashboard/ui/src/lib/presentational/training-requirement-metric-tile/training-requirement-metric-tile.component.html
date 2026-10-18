@@ -8,21 +8,21 @@
         <span>Details</span> <mat-icon fontIcon="chevron_right" />
       </div>
     </div>
-    <div class="sub-metric-container reached">
-      <div class="sub-metric met">
+    <div class="sub-metric-container">
+      <div class="sub-metric reached">
         <mat-icon class="icon" fontIcon="check_circle" />
         <div class="info">
           <div class="value">
-            <strong>{{ totalRequirementMet() }}</strong>
+            <strong>{{ totalRequirementReached() }}</strong>
           </div>
           <span>Reached</span>
         </div>
       </div>
-      <div class="sub-metric almost-met">
+      <div class="sub-metric almost-reached">
         <mat-icon class="icon" fontIcon="pending" />
         <div class="info">
           <div class="value">
-            <strong>{{ totalRequirementAlmostMet() }}</strong>
+            <strong>{{ totalRequirementAlmostReached() }}</strong>
           </div>
           <span>Almost Reached</span>
         </div>

@@ -15,8 +15,8 @@ import { MatIcon } from '@angular/material/icon';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrainingRequirementMetricTile {
-  readonly totalRequirementMet = input.required<number>();
-  readonly totalRequirementAlmostMet = input.required<number>();
+  readonly totalRequirementReached = input.required<number>();
+  readonly totalRequirementAlmostReached = input.required<number>();
 
   readonly clicked = output();
 }

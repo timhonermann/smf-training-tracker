@@ -2,8 +2,8 @@ import { PersonData } from '@stt/shared/person/model';
 
 type YearlyMetric = {
   year: number;
-  totalPeopleTrainingRequirementMet: number;
-  totalPeopleTrainingRequirementAlmostAlmostMet: number;
+  totalPeopleTrainingRequirementReached: number;
+  totalPeopleTrainingRequirementAlmostReached: number;
   totalTrainings: number;
   averageParticipants: number;
 };
@@ -14,9 +14,9 @@ export type SummaryMetric = {
 };
 
 export const trainingRequirementStatus = {
-  MET: 'MET',
-  ALMOST_MET: 'ALMOST_MET',
-  UNMET: 'UNMET',
+  REACHED: 'REACHED',
+  ALMOST_REACHED: 'ALMOST_REACHED',
+  NOT_REACHED: 'NOT_REACHED',
 } as const;
 
 export type TrainingRequirementStatus =

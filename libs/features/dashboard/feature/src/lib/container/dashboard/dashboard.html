@@ -1,8 +1,10 @@
 <stt-yearly-metric-group
   [year]="store.currentYear.year()"
-  [totalRequirementMet]="store.currentYear.totalPeopleTrainingRequirementMet()"
-  [totalRequirementAlmostMet]="
-    store.currentYear.totalPeopleTrainingRequirementAlmostAlmostMet()
+  [totalRequirementReached]="
+    store.currentYear.totalPeopleTrainingRequirementReached()
+  "
+  [totalRequirementAlmostReached]="
+    store.currentYear.totalPeopleTrainingRequirementAlmostReached()
   "
   [averageParticipants]="store.currentYear.averageParticipants()"
   [totalTrainings]="store.currentYear.totalTrainings()"
@@ -11,9 +13,11 @@
 
 <stt-yearly-metric-group
   [year]="store.previousYear.year()"
-  [totalRequirementMet]="store.previousYear.totalPeopleTrainingRequirementMet()"
-  [totalRequirementAlmostMet]="
-    store.previousYear.totalPeopleTrainingRequirementAlmostAlmostMet()
+  [totalRequirementReached]="
+    store.previousYear.totalPeopleTrainingRequirementReached()
+  "
+  [totalRequirementAlmostReached]="
+    store.previousYear.totalPeopleTrainingRequirementAlmostReached()
   "
   [averageParticipants]="store.previousYear.averageParticipants()"
   [totalTrainings]="store.previousYear.totalTrainings()"
