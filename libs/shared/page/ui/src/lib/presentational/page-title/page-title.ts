@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'stt-page-title',
-  imports: [],
   templateUrl: './page-title.html',
   styleUrl: './page-title.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
