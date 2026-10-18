@@ -1,19 +1,21 @@
+@use 'colors';
+
 :host {
   display: flex;
   padding: 8px 16px;
   justify-content: space-between;
-  color: white;
+  color: colors.$surface;
   border-radius: 8px;
 
   &.reached {
-    background-color: green;
+    background-color: colors.$success;
   }
 
   &.almost-reached {
-    background-color: darkorange;
+    background-color: colors.$warning;
   }
 
   &.not-reached {
-    background-color: indianred;
+    background-color: colors.$red;
   }
 }
