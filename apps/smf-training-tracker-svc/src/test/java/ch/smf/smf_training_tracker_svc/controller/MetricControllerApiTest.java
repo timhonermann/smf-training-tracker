@@ -7,12 +7,14 @@ import ch.smf.smf_training_tracker_svc.entity.TrainingLocation;
 import ch.smf.smf_training_tracker_svc.repository.PersonRepository;
 import ch.smf.smf_training_tracker_svc.repository.TrainingLocationRepository;
 import ch.smf.smf_training_tracker_svc.repository.TrainingRepository;
+import ch.smf.smf_training_tracker_svc.service.DateService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.closeTo;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,7 +37,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource("classpath:application-test.properties")
 class MetricControllerApiTest {
 
-  private static final int CURRENT_YEAR = LocalDate.now().getYear();
+  /** A fixed year, so the test never depends on the real clock. */
+  private static final int CURRENT_YEAR = 2030;
+
+  @MockitoBean
+  private DateService dateService;
 
   @Autowired
   private MockMvc mockMvc;
@@ -54,6 +61,9 @@ class MetricControllerApiTest {
 
   @BeforeEach
   void seedCurrentYear() {
+    when(dateService.getCurrentYear()).thenReturn(CURRENT_YEAR);
+    when(dateService.getPreviousYear()).thenReturn(CURRENT_YEAR - 1);
+
     trainingsPerPerson.put(savePerson("Nico", "NotReached"), 19);
     trainingsPerPerson.put(savePerson("Alma", "AlmostReachedLow"), 20);
     trainingsPerPerson.put(savePerson("Anna", "AlmostReachedHigh"), 25);
