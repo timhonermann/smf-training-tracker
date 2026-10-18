@@ -4,7 +4,7 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SummaryMetric } from '@stt/features/dashboard/model';
@@ -111,5 +111,107 @@ describe('Dashboard', () => {
     expect(yearGroups).toHaveLength(2);
     expect(text(yearGroups[0])).toContain('2031');
     expect(text(yearGroups[1])).toContain('2030');
+  });
+
+  describe('training requirement tile', () => {
+    const requirementTiles = (page: HTMLElement) =>
+      page.querySelectorAll('stt-training-requirement-metric-tile');
+
+    /** The element's text nodes in reading order, separated by spaces. */
+    const spacedText = (element: Element): string => {
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const parts: string[] = [];
+      while (walker.nextNode()) {
+        const part = walker.currentNode.textContent?.trim();
+        if (part) parts.push(part);
+      }
+      return parts.join(' ').replace(/\s+/g, ' ');
+    };
+
+    it('shows the title, subtitle and details cue', async () => {
+      const page = await renderDashboard();
+
+      const tile = text(requirementTiles(page)[0]);
+      expect(tile).toContain('Training Requirement');
+      expect(tile).toContain(
+        'Status of reached and almost reached requirements',
+      );
+      expect(tile).toContain('Details');
+    });
+
+    it('shows the Reached and Almost Reached counts of each year', async () => {
+      const page = await renderDashboard(
+        summaryMetric({
+          currentYear: {
+            totalPeopleTrainingRequirementReached: 11,
+            totalPeopleTrainingRequirementAlmostReached: 6,
+          },
+          previousYear: {
+            totalPeopleTrainingRequirementReached: 9,
+            totalPeopleTrainingRequirementAlmostReached: 2,
+          },
+        }),
+      );
+
+      const [currentYearTile, previousYearTile] = requirementTiles(page);
+      expect(spacedText(currentYearTile)).toContain(
+        '11 Reached 6 Almost Reached',
+      );
+      expect(spacedText(previousYearTile)).toContain(
+        '9 Reached 2 Almost Reached',
+      );
+    });
+
+    describe('navigation to the Training Requirement page', () => {
+      let router: Router;
+
+      beforeEach(() => {
+        router = TestBed.inject(Router);
+        router.resetConfig([
+          { path: 'training-requirement', children: [] },
+          { path: '**', children: [] },
+        ]);
+      });
+
+      /** The tile's focusable click target. */
+      const clickTarget = (tile: Element): HTMLElement => {
+        const target = tile.querySelector<HTMLElement>('[tabindex="0"]');
+        if (!target) throw new Error('The tile has no focusable target');
+        return target;
+      };
+
+      const cases = [
+        { yearGroup: 'current', index: 0 },
+        { yearGroup: 'previous', index: 1 },
+      ];
+
+      it.each(cases)(
+        'opens it for the $yearGroup year when the tile is clicked',
+        async ({ yearGroup, index }) => {
+          const page = await renderDashboard();
+
+          clickTarget(requirementTiles(page)[index]).click();
+          await fixture.whenStable();
+
+          expect(router.url).toBe(`/training-requirement?year=${yearGroup}`);
+        },
+      );
+
+      it.each(cases)(
+        'opens it for the $yearGroup year when Enter is pressed on the focused tile',
+        async ({ yearGroup, index }) => {
+          const page = await renderDashboard();
+
+          const target = clickTarget(requirementTiles(page)[index]);
+          target.focus();
+          target.dispatchEvent(
+            new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+          );
+          await fixture.whenStable();
+
+          expect(router.url).toBe(`/training-requirement?year=${yearGroup}`);
+        },
+      );
+    });
   });
 });
