@@ -61,7 +61,8 @@
       ],
       "@stt/shared/branding/theme": [
         "./libs/shared/branding/theme/src/index.ts"
-      ]
+      ],
+      "@stt/shared/page/ui": ["./libs/shared/page/ui/src/index.ts"]
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,
