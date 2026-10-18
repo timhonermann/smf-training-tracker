@@ -1,6 +1,7 @@
+@let metric = yearlyMetric();
 <header class="year-heading">
   <div class="title-row">
-    <h2 class="year">{{ year() }}</h2>
+    <h2 class="year">{{ metric.year }}</h2>
     @if (isCurrentYear()) {
       <span class="current-year-pill">Current Year</span>
     }
@@ -11,19 +12,21 @@
   </div>
 </header>
 <stt-training-requirement-metric-tile
-  [totalRequirementReached]="totalRequirementReached()"
-  [totalRequirementAlmostReached]="totalRequirementAlmostReached()"
+  [totalRequirementReached]="metric.totalPeopleTrainingRequirementReached"
+  [totalRequirementAlmostReached]="
+    metric.totalPeopleTrainingRequirementAlmostReached
+  "
   (clicked)="clicked.emit()"
 />
 <stt-metric-tile
   title="Ø Participants"
   description="Average participants per training"
-  [value]="averageParticipants()"
+  [value]="metric.averageParticipants"
   icon="group"
 />
 <stt-metric-tile
   title="Total Trainings"
   description="Number of training sessions conducted"
-  [value]="totalTrainings()"
+  [value]="metric.totalTrainings"
   icon="paw"
 />

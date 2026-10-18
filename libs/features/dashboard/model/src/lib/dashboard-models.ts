@@ -1,6 +1,6 @@
 import { PersonData } from '@stt/shared/person/model';
 
-type YearlyMetric = {
+export type YearlyMetric = {
   year: number;
   totalPeopleTrainingRequirementReached: number;
   totalPeopleTrainingRequirementAlmostReached: number;

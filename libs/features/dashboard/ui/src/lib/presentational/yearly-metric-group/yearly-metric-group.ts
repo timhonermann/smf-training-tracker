@@ -6,6 +6,7 @@ import {
   output,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { YearlyMetric } from '@stt/features/dashboard/model';
 import { MetricTile } from '../metric-tile/metric-tile';
 import { TrainingRequirementMetricTile } from '../training-requirement-metric-tile/training-requirement-metric-tile.component';
 
@@ -17,11 +18,7 @@ import { TrainingRequirementMetricTile } from '../training-requirement-metric-ti
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class YearlyMetricGroup {
-  readonly year = input.required<number>();
-  readonly totalRequirementReached = input.required<number>();
-  readonly totalRequirementAlmostReached = input.required<number>();
-  readonly averageParticipants = input.required<number>();
-  readonly totalTrainings = input.required<number>();
+  readonly yearlyMetric = input.required<YearlyMetric>();
   readonly isCurrentYear = input(false);
 
   readonly clicked = output();
@@ -30,7 +27,8 @@ export class YearlyMetricGroup {
    * The calendar year the metrics cover, as the backend defines it, in a fixed
    * dd.MM.yyyy format regardless of the browser locale.
    */
-  readonly dateRange = computed(
-    () => `01.01.${this.year()} – 31.12.${this.year()}`,
-  );
+  readonly dateRange = computed(() => {
+    const year = this.yearlyMetric().year;
+    return `01.01.${year} – 31.12.${year}`;
+  });
 }

@@ -5,15 +5,7 @@
   />
 
   <stt-yearly-metric-group
-    [year]="store.currentYear.year()"
-    [totalRequirementReached]="
-      store.currentYear.totalPeopleTrainingRequirementReached()
-    "
-    [totalRequirementAlmostReached]="
-      store.currentYear.totalPeopleTrainingRequirementAlmostReached()
-    "
-    [averageParticipants]="store.currentYear.averageParticipants()"
-    [totalTrainings]="store.currentYear.totalTrainings()"
+    [yearlyMetric]="store.currentYear()"
     [isCurrentYear]="true"
     (clicked)="store.navigateToTrainingRequirementsCurrentYear()"
   />
@@ -21,15 +13,7 @@
   <hr class="divider" />
 
   <stt-yearly-metric-group
-    [year]="store.previousYear.year()"
-    [totalRequirementReached]="
-      store.previousYear.totalPeopleTrainingRequirementReached()
-    "
-    [totalRequirementAlmostReached]="
-      store.previousYear.totalPeopleTrainingRequirementAlmostReached()
-    "
-    [averageParticipants]="store.previousYear.averageParticipants()"
-    [totalTrainings]="store.previousYear.totalTrainings()"
+    [yearlyMetric]="store.previousYear()"
     (clicked)="store.navigateToTrainingRequirementsPreviousYear()"
   />
 </div>

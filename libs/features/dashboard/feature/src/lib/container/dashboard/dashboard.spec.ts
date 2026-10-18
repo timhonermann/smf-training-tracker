@@ -7,11 +7,9 @@ import {
 import { provideRouter, Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { SummaryMetric } from '@stt/features/dashboard/model';
+import { SummaryMetric, YearlyMetric } from '@stt/features/dashboard/model';
 import { icons } from '@stt/shared/icon/model';
 import { Dashboard } from './dashboard';
-
-type YearlyMetric = SummaryMetric['currentYear'];
 
 const SUMMARY_URL = 'api/v1/metrics/summary';
 
