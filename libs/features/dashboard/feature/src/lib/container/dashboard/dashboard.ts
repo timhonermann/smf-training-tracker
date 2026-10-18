@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SummaryMetricStore } from '@stt/features/dashboard/domain';
 import { YearlyMetricGroup } from '@stt/features/dashboard/ui';
+import { PageTitle } from '@stt/shared/page/ui';
 
 @Component({
   selector: 'stt-dashboard',
-  imports: [YearlyMetricGroup],
+  imports: [PageTitle, YearlyMetricGroup],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

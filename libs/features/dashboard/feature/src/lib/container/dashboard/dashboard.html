@@ -1,25 +1,34 @@
-<stt-yearly-metric-group
-  [year]="store.currentYear.year()"
-  [totalRequirementReached]="
-    store.currentYear.totalPeopleTrainingRequirementReached()
-  "
-  [totalRequirementAlmostReached]="
-    store.currentYear.totalPeopleTrainingRequirementAlmostReached()
-  "
-  [averageParticipants]="store.currentYear.averageParticipants()"
-  [totalTrainings]="store.currentYear.totalTrainings()"
-  (clicked)="store.navigateToTrainingRequirementsCurrentYear()"
-/>
+<div class="page">
+  <stt-page-title
+    title="Dashboard"
+    subtitle="Overview of all trainings and requirements"
+  />
 
-<stt-yearly-metric-group
-  [year]="store.previousYear.year()"
-  [totalRequirementReached]="
-    store.previousYear.totalPeopleTrainingRequirementReached()
-  "
-  [totalRequirementAlmostReached]="
-    store.previousYear.totalPeopleTrainingRequirementAlmostReached()
-  "
-  [averageParticipants]="store.previousYear.averageParticipants()"
-  [totalTrainings]="store.previousYear.totalTrainings()"
-  (clicked)="store.navigateToTrainingRequirementsPreviousYear()"
-/>
+  <stt-yearly-metric-group
+    [year]="store.currentYear.year()"
+    [totalRequirementReached]="
+      store.currentYear.totalPeopleTrainingRequirementReached()
+    "
+    [totalRequirementAlmostReached]="
+      store.currentYear.totalPeopleTrainingRequirementAlmostReached()
+    "
+    [averageParticipants]="store.currentYear.averageParticipants()"
+    [totalTrainings]="store.currentYear.totalTrainings()"
+    (clicked)="store.navigateToTrainingRequirementsCurrentYear()"
+  />
+
+  <hr class="divider" />
+
+  <stt-yearly-metric-group
+    [year]="store.previousYear.year()"
+    [totalRequirementReached]="
+      store.previousYear.totalPeopleTrainingRequirementReached()
+    "
+    [totalRequirementAlmostReached]="
+      store.previousYear.totalPeopleTrainingRequirementAlmostReached()
+    "
+    [averageParticipants]="store.previousYear.averageParticipants()"
+    [totalTrainings]="store.previousYear.totalTrainings()"
+    (clicked)="store.navigateToTrainingRequirementsPreviousYear()"
+  />
+</div>
