@@ -112,4 +112,40 @@ describe('Dashboard', () => {
     expect(text(yearGroups[0])).toContain('2031');
     expect(text(yearGroups[1])).toContain('2030');
   });
+
+  describe('year heading', () => {
+    it('marks only the current year with the Current Year pill', async () => {
+      const page = await renderDashboard();
+
+      const [currentYear, previousYear] = Array.from(
+        page.querySelectorAll('stt-yearly-metric-group'),
+      );
+      expect(text(currentYear)).toContain('Current Year');
+      expect(text(previousYear)).not.toContain('Current Year');
+    });
+
+    it('shows the calendar year each year covers as dd.MM.yyyy', async () => {
+      const page = await renderDashboard(
+        summaryMetric({
+          currentYear: { year: 2031 },
+          previousYear: { year: 2030 },
+        }),
+      );
+
+      const [currentYear, previousYear] = Array.from(
+        page.querySelectorAll('stt-yearly-metric-group'),
+      );
+      expect(text(currentYear)).toContain('01.01.2031 – 31.12.2031');
+      expect(text(previousYear)).toContain('01.01.2030 – 31.12.2030');
+    });
+
+    it('shows a calendar icon next to each date range', async () => {
+      const page = await renderDashboard();
+
+      const calendarIcons = page.querySelectorAll(
+        'stt-yearly-metric-group mat-icon[data-mat-icon-name="calendar"]',
+      );
+      expect(calendarIcons).toHaveLength(2);
+    });
+  });
 });
