@@ -1,5 +1,86 @@
+@use 'sass:color';
+@use 'breakpoints';
+@use 'colors';
+
+// Mobile: requirement tile full width, metric tiles in two columns.
 :host {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  @media (max-width: #{breakpoints.$narrow-phone - 0.02px}) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: breakpoints.$tablet) {
+    gap: 16px;
+  }
+
+  // Desktop: one row per year, about 2fr / 1fr / 1fr.
+  @media (min-width: breakpoints.$desktop) {
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+.year-heading,
+stt-training-requirement-metric-tile {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: breakpoints.$desktop) {
+  stt-training-requirement-metric-tile {
+    grid-column: auto;
+  }
+}
+
+// Year and pill on the left, date range right-aligned on the same row. When
+// the row is too narrow, the date range wraps below the year.
+.year-heading {
+  margin-bottom: 4px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.year {
+  margin: 0;
+  color: colors.$text;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.current-year-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: color.change(colors.$red, $alpha: 0.1);
+  color: colors.$red;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: colors.$text-secondary;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.calendar-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
 }

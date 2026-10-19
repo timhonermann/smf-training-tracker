@@ -10,7 +10,7 @@
       "cache": false,
       "options": {
         "cwd": "apps/smf-training-tracker-svc",
-        "command": "gradlew.bat bootRun"
+        "command": "./gradlew bootRun"
       }
     },
     "docker:run": {

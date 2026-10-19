@@ -10,55 +10,49 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.function.BiFunction;
+
+import static ch.smf.smf_training_tracker_svc.model.TrainingRequirementStatus.ALMOST_REACHED_MIN_TRAININGS;
+import static ch.smf.smf_training_tracker_svc.model.TrainingRequirementStatus.REACHED_MIN_TRAININGS;
 
 @Service
 @RequiredArgsConstructor
 public class MetricService {
 
-  private static final int REQUIRED_TRAININGS_COUNT = 26;
-  private static final int ALMOST_MET_REQUIRED_TRAINING_COUNT = REQUIRED_TRAININGS_COUNT - 6;
-
   private final PersonRepository personRepository;
   private final TrainingRepository trainingRepository;
 
   public int getTotalTrainings(final int year) {
-    return trainingRepository.countAllWithin(getStartOfYear(year), getEndOfYear(year));
+    return withinYear(year, trainingRepository::countAllWithin);
   }
 
   public double getAverageParticipants(final int year) {
-    return trainingRepository.averageParticipantsWithin(getStartOfYear(year), getEndOfYear(year));
+    return withinYear(year, trainingRepository::averageParticipantsWithin);
   }
 
-  public int getCountTrainingRequirementsMet(final int year) {
-    LocalDate startOfYear = getStartOfYear(year);
-    LocalDate endOfYear = getEndOfYear(year);
-
-    return personRepository.countAllByTrainingsLimitMet(startOfYear, endOfYear, REQUIRED_TRAININGS_COUNT);
+  /** Counts the People who reached their Training Requirement in the given year. */
+  public int countPeopleReached(final int year) {
+    return withinYear(year, (startOfYear, endOfYear) -> personRepository.countAllByTrainingCountWithin(
+      startOfYear, endOfYear, REACHED_MIN_TRAININGS, Integer.MAX_VALUE));
   }
 
-  public int getCountTrainingRequirementsAlmostMet(final int year) {
-    LocalDate startOfYear = getStartOfYear(year);
-    LocalDate endOfYear = getEndOfYear(year);
-
-    return personRepository.countAllByTrainingsLimitMet(startOfYear, endOfYear, ALMOST_MET_REQUIRED_TRAINING_COUNT);
+  /** Counts the People who almost reached their Training Requirement in the given year. */
+  public int countPeopleAlmostReached(final int year) {
+    return withinYear(year, (startOfYear, endOfYear) -> personRepository.countAllByTrainingCountWithin(
+      startOfYear, endOfYear, ALMOST_REACHED_MIN_TRAININGS, REACHED_MIN_TRAININGS));
   }
 
   public List<PersonMetric> findPeopleInclTrainingMetricWithinPeriod(final int year) {
-    LocalDate startOfYear = getStartOfYear(year);
-    LocalDate endOfYear = getEndOfYear(year);
-    final var personMetricQueryResult = personRepository.findPeopleInclTrainingMetricWithinPeriod(startOfYear, endOfYear);
+    final var personMetricQueryResult = withinYear(year, personRepository::findPeopleInclTrainingMetricWithinPeriod);
 
     return personMetricQueryResult.stream()
       .map(qr -> personMetricQueryResultToPersonMetric(qr, year))
       .toList();
   }
 
-  private LocalDate getStartOfYear(int year) {
-    return LocalDate.of(year, 1, 1);
-  }
-
-  private LocalDate getEndOfYear(int year) {
-    return LocalDate.of(year, 12, 31);
+  /** Runs a query over the calendar year, from January 1 to December 31 inclusive. */
+  private <T> T withinYear(final int year, final BiFunction<LocalDate, LocalDate, T> query) {
+    return query.apply(LocalDate.of(year, 1, 1), LocalDate.of(year, 12, 31));
   }
 
   private PersonMetric personMetricQueryResultToPersonMetric(final PersonMetricQueryResult personMetricQueryResult, final int year) {

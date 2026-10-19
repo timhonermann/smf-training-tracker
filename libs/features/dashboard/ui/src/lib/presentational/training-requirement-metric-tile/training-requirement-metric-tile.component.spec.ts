@@ -16,8 +16,8 @@ describe('TrainingRequirementMetricTile', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(TrainingRequirementMetricTile);
-    fixture.componentRef.setInput('totalRequirementMet', 0);
-    fixture.componentRef.setInput('totalRequirementAlmostMet', 0);
+    fixture.componentRef.setInput('totalRequirementReached', 0);
+    fixture.componentRef.setInput('totalRequirementAlmostReached', 0);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

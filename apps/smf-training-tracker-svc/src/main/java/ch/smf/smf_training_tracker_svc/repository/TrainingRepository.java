@@ -24,7 +24,7 @@ public interface TrainingRepository extends JpaRepository<Training, UUID> {
     FROM Training t
     LEFT JOIN t.people p
     WHERE t.scheduledAt >= :startDate
-      AND t.scheduledAt <  :endDate
+      AND t.scheduledAt <= :endDate
     """)
   double averageParticipantsWithin(LocalDate startDate, LocalDate endDate);
 }

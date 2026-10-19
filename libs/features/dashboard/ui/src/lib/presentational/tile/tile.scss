@@ -1,9 +1,33 @@
+@use 'breakpoints';
+@use 'colors';
+
 :host {
-  padding: 24px;
-  background-color: var(--mat-sys-primary-container);
-  border-radius: 20px;
+  display: block;
+  padding: 16px;
+  background-color: colors.$surface;
+  border: 1px solid colors.$border;
+  border-radius: 16px;
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+
+  box-shadow:
+    0 1px 2px rgb(33 29 26 / 4%),
+    0 4px 12px rgb(33 29 26 / 6%);
 
   &.clickable:hover {
-    background-color: var(--mat-sys-primary-fixed-dim);
+    transform: translateY(-2px);
+
+    border-color: colors.$border-strong;
+
+    box-shadow:
+      0 2px 4px rgb(33 29 26 / 6%),
+      0 8px 20px rgb(33 29 26 / 10%);
+  }
+
+  @media (min-width: breakpoints.$tablet) {
+    padding: 24px;
   }
 }

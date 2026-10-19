@@ -58,7 +58,11 @@
       "@stt/features/dashboard/ui": ["libs/features/dashboard/ui/src/index.ts"],
       "@stt/features/dashboard/model": [
         "libs/features/dashboard/model/src/index.ts"
-      ]
+      ],
+      "@stt/shared/branding/theme": [
+        "./libs/shared/branding/theme/src/index.ts"
+      ],
+      "@stt/shared/page/ui": ["./libs/shared/page/ui/src/index.ts"]
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,

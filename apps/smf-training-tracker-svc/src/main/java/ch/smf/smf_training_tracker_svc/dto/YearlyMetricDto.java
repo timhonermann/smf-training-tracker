@@ -5,8 +5,8 @@ import lombok.Builder;
 @Builder
 public record YearlyMetricDto(
   int year,
-  int totalPeopleTrainingRequirementMet,
-  int totalPeopleTrainingRequirementAlmostAlmostMet,
+  int totalPeopleTrainingRequirementReached,
+  int totalPeopleTrainingRequirementAlmostReached,
   int totalTrainings,
   double averageParticipants
 ) {

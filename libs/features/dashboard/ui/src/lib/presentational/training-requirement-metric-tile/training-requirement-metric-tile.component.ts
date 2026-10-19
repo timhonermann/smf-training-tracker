@@ -5,17 +5,18 @@ import {
   output,
 } from '@angular/core';
 import { Tile } from '../tile/tile';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'stt-training-requirement-metric-tile',
-  imports: [Tile],
+  imports: [Tile, MatIcon],
   templateUrl: './training-requirement-metric-tile.component.html',
   styleUrl: './training-requirement-metric-tile.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrainingRequirementMetricTile {
-  readonly totalRequirementMet = input.required<number>();
-  readonly totalRequirementAlmostMet = input.required<number>();
+  readonly totalRequirementReached = input.required<number>();
+  readonly totalRequirementAlmostReached = input.required<number>();
 
   readonly clicked = output();
 }

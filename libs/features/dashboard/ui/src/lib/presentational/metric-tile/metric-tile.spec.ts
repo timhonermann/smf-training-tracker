@@ -22,6 +22,7 @@ describe('MetricTile', () => {
 
     fixture = TestBed.createComponent(MetricTile);
     fixture.componentRef.setInput('title', '');
+    fixture.componentRef.setInput('icon', 'group');
     fixture.componentRef.setInput('value', 0);
     component = fixture.componentInstance;
     fixture.detectChanges();

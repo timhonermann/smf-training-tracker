@@ -89,6 +89,10 @@ export default [
               sourceTag: 'type:layout',
               onlyDependOnLibsWithTags: ['type:layout'],
             },
+            {
+              sourceTag: 'type:style',
+              onlyDependOnLibsWithTags: ['type:style'],
+            },
           ],
         },
       ],

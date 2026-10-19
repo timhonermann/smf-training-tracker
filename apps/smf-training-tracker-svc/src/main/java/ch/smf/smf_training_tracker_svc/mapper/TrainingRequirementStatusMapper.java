@@ -9,9 +9,9 @@ public class TrainingRequirementStatusMapper {
 
   public TrainingRequirementStatusDto toDto(TrainingRequirementStatus status) {
     return switch (status) {
-      case MET -> TrainingRequirementStatusDto.MET;
-      case ALMOST_MET -> TrainingRequirementStatusDto.ALMOST_MET;
-      case UNMET -> TrainingRequirementStatusDto.UNMET;
+      case REACHED -> TrainingRequirementStatusDto.REACHED;
+      case ALMOST_REACHED -> TrainingRequirementStatusDto.ALMOST_REACHED;
+      case NOT_REACHED -> TrainingRequirementStatusDto.NOT_REACHED;
     };
   }
 

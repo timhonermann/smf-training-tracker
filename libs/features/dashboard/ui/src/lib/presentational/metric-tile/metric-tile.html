@@ -1,4 +1,10 @@
 <stt-tile class="tile-content">
-  <div><strong>{{ title() }}</strong></div>
-  <div class="value"><strong>{{ value() | number }}</strong></div>
+  <mat-icon class="icon" [svgIcon]="icon()" />
+  <div class="content">
+    <div class="header">
+      <span class="title">{{ title() }}</span>
+      <span class="description">{{ description() }}</span>
+    </div>
+    <strong class="value">{{ value() | number: '1.0-1' }}</strong>
+  </div>
 </stt-tile>

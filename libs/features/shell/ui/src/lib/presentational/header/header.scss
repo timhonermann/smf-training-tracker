@@ -1,3 +1,5 @@
+@use "colors";
+
 .header {
   display: flex;
   gap: 30px;
@@ -5,5 +7,6 @@
   width: 100%;
   padding: 5px 20px;
   box-sizing: border-box;
-  background-color: var(--mat-sys-primary-container);
+  background-color: colors.$charcoal;
+  border-bottom: 3px solid colors.$yellow;
 }

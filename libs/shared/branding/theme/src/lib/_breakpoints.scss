@@ -1,0 +1,10 @@
+// _breakpoints.scss
+
+// Viewport widths. Use them as `min-width` thresholds; for a `max-width`
+// query subtract 0.02px so the two ranges never overlap.
+$narrow-phone: 360px;
+$tablet: 600px;
+$desktop: 1024px;
+
+// Container width below which a metric tile stacks its icon above the text.
+$tile-compact: 220px;

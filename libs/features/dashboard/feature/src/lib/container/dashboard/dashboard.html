@@ -1,21 +1,19 @@
-<stt-yearly-metric-group
-  [year]="store.currentYear.year()"
-  [totalRequirementMet]="store.currentYear.totalPeopleTrainingRequirementMet()"
-  [totalRequirementAlmostMet]="
-    store.currentYear.totalPeopleTrainingRequirementAlmostAlmostMet()
-  "
-  [averageParticipants]="store.currentYear.averageParticipants()"
-  [totalTrainings]="store.currentYear.totalTrainings()"
-  (clicked)="store.navigateToTrainingRequirementsCurrentYear()"
-/>
+<div class="page">
+  <stt-page-title
+    title="Dashboard"
+    subtitle="Overview of all trainings and requirements"
+  />
 
-<stt-yearly-metric-group
-  [year]="store.previousYear.year()"
-  [totalRequirementMet]="store.previousYear.totalPeopleTrainingRequirementMet()"
-  [totalRequirementAlmostMet]="
-    store.previousYear.totalPeopleTrainingRequirementAlmostAlmostMet()
-  "
-  [averageParticipants]="store.previousYear.averageParticipants()"
-  [totalTrainings]="store.previousYear.totalTrainings()"
-  (clicked)="store.navigateToTrainingRequirementsPreviousYear()"
-/>
+  <stt-yearly-metric-group
+    [yearlyMetric]="store.currentYear()"
+    [isCurrentYear]="true"
+    (clicked)="store.navigateToTrainingRequirementsCurrentYear()"
+  />
+
+  <hr class="divider" />
+
+  <stt-yearly-metric-group
+    [yearlyMetric]="store.previousYear()"
+    (clicked)="store.navigateToTrainingRequirementsPreviousYear()"
+  />
+</div>

@@ -14,19 +14,25 @@ import java.util.UUID;
 public interface PersonRepository extends JpaRepository<Person, UUID> {
   int countByIdIn(List<UUID> ids);
 
+  /**
+   * Counts the People with at least {@code minAmount} and fewer than {@code maxAmountExclusive}
+   * Trainings within the period. {@code minAmount} must be greater than zero.
+   */
   @Query("""
     SELECT COUNT(p)
     FROM Person p
-    WHERE (
-    SELECT COUNT(t.id)
-    FROM Person p2
-    JOIN p2.trainings t
-    WHERE p2 = p
-        AND t.scheduledAt >= :startDate
-        AND t.scheduledAt <=  :endDate
-    ) >= :minAmount
+    WHERE p.id IN (
+        SELECT p2.id
+        FROM Person p2
+        JOIN p2.trainings t
+        WHERE t.scheduledAt >= :startDate
+            AND t.scheduledAt <= :endDate
+        GROUP BY p2.id
+        HAVING COUNT(t.id) >= :minAmount
+            AND COUNT(t.id) < :maxAmountExclusive
+    )
     """)
-  int countAllByTrainingsLimitMet(LocalDate startDate, LocalDate endDate, int minAmount);
+  int countAllByTrainingCountWithin(LocalDate startDate, LocalDate endDate, int minAmount, int maxAmountExclusive);
 
   @Query("""
     SELECT p.id,

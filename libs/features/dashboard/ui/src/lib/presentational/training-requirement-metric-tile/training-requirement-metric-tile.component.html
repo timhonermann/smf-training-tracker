@@ -1,15 +1,42 @@
-<a role="button" tabindex="0" (click)="clicked.emit()">
+<div
+  class="click-target"
+  role="button"
+  tabindex="0"
+  (click)="clicked.emit()"
+  (keydown.enter)="clicked.emit()"
+>
   <stt-tile class="tile-content" [isClickable]="true">
-    <div><strong>Training Requirement</strong></div>
-    <div class="sub-metric-container reached">
-      <div class="sub-metric met">
-        <h5>Reached</h5>
-        <div class="value"><strong>{{ totalRequirementMet() }}</strong></div>
+    <div class="header">
+      <div class="accent"></div>
+      <div class="heading">
+        <span class="title">Training Requirement</span>
+        <span class="subtitle"
+          >Status of reached and almost reached requirements</span
+        >
       </div>
-      <div class="sub-metric almost-met">
-        <h5>Almost Reached</h5>
-        <div class="value"><strong>{{ totalRequirementAlmostMet() }}</strong></div>
+      <div class="detail-link">
+        <span>Details</span> <mat-icon fontIcon="chevron_right" />
+      </div>
+    </div>
+    <div class="sub-metric-container">
+      <div class="sub-metric reached">
+        <span class="badge">
+          <mat-icon fontIcon="check" />
+        </span>
+        <div class="info">
+          <strong class="value">{{ totalRequirementReached() }}</strong>
+          <span class="label">Reached</span>
+        </div>
+      </div>
+      <div class="sub-metric almost-reached">
+        <span class="badge">
+          <mat-icon fontIcon="schedule" />
+        </span>
+        <div class="info">
+          <strong class="value">{{ totalRequirementAlmostReached() }}</strong>
+          <span class="label">Almost Reached</span>
+        </div>
       </div>
     </div>
   </stt-tile>
-</a>
+</div>
