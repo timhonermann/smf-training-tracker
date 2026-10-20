@@ -6,6 +6,14 @@
 
 [Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
 
+## Service configuration
+
+The service reads its database connection from the environment variables `DB_URL`, `DB_USERNAME` and `DB_PASSWORD`.
+
+For local development, copy `apps/smf-training-tracker-svc/.env.example` to `apps/smf-training-tracker-svc/.env` and fill in the values. Spring Boot loads that file on startup when the working directory is `apps/smf-training-tracker-svc` (as with `npm run start:svc`). `.env` is gitignored, never commit it.
+
+In production, pass the same variables to the container, e.g. `docker run -e DB_URL=... -e DB_USERNAME=... -e DB_PASSWORD=...`.
+
 ## Run tasks
 
 To run the dev server for your app, use:
