@@ -1,11 +1,10 @@
-<div class="page">
-  <div class="page-header">
-    <stt-back-button [link]="backLink()" />
-    <stt-page-title
-      title="New Location"
-      subtitle="Add a place where trainings take place"
-    />
-  </div>
+<stt-page-layout>
+  <stt-back-button pageHeader [link]="backLink()" />
+  <stt-page-title
+    pageHeader
+    title="New Location"
+    subtitle="Add a place where trainings take place"
+  />
 
   <stt-tile class="form-tile">
     <mat-form-field class="form-field" appearance="outline">
@@ -17,4 +16,4 @@
   <stt-button class="create-button" [isDisabled]="!nameControl.valid" (clicked)="create()"
     >Create</stt-button
   >
-</div>
+</stt-page-layout>

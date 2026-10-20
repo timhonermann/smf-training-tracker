@@ -13,10 +13,17 @@ import {
 } from '@stt/features/training/domain';
 import { TrainingCreationForm } from '@stt/features/training/ui';
 import { PageTitle } from '@stt/shared/page/ui';
+import { PageLayout } from '@stt/shared/page/layout';
 
 @Component({
   selector: 'stt-training-creation',
-  imports: [BackButton, ReactiveFormsModule, TrainingCreationForm, PageTitle],
+  imports: [
+    BackButton,
+    ReactiveFormsModule,
+    TrainingCreationForm,
+    PageTitle,
+    PageLayout,
+  ],
   templateUrl: './training-creation.html',
   styleUrl: './training-creation.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

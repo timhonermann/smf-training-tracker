@@ -6,10 +6,17 @@ import {
 } from '@stt/features/training/ui';
 import { MatAccordion } from '@angular/material/expansion';
 import { PageTitle } from '@stt/shared/page/ui';
+import { PageLayout } from '@stt/shared/page/layout';
 
 @Component({
   selector: 'stt-training-list',
-  imports: [TrainingListItem, MatAccordion, TrainingListActions, PageTitle],
+  imports: [
+    TrainingListItem,
+    MatAccordion,
+    TrainingListActions,
+    PageTitle,
+    PageLayout,
+  ],
   templateUrl: './training-list.html',
   styleUrl: './training-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
