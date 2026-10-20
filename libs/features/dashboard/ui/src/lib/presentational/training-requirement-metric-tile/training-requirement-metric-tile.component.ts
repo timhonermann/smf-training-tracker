@@ -4,7 +4,7 @@ import {
   input,
   output,
 } from '@angular/core';
-import { Tile } from '../tile/tile';
+import { Tile } from '@stt/shared/page/ui';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({

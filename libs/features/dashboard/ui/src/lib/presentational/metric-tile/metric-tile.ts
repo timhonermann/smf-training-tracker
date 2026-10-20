@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Tile } from '../tile/tile';
+import { Tile } from '@stt/shared/page/ui';
 import { DecimalPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { IconType } from '@stt/shared/icon/model';
