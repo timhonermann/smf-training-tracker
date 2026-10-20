@@ -7,6 +7,7 @@ import {
 } from '@stt/features/dashboard/ui';
 import { ReactiveFormsModule } from '@angular/forms';
 import { YearReferenceParam } from '@stt/features/dashboard/model';
+import { Tile } from '@stt/shared/page/ui';
 
 @Component({
   selector: 'stt-training-requirement',
@@ -15,6 +16,7 @@ import { YearReferenceParam } from '@stt/features/dashboard/model';
     TrainingRequirementHeader,
     TrainingRequirementTitle,
     TrainingRequirementList,
+    Tile,
   ],
   templateUrl: './training-requirement.html',
   styleUrl: './training-requirement.scss',

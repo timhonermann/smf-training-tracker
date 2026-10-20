@@ -1,6 +1,12 @@
+@use 'colors';
+
 .title {
   display: flex;
   justify-content: space-between;
-  padding: 0 16px;
-  border-bottom: 2px solid black;
+  padding: 12px 16px;
+  border-bottom: 1px solid colors.$border;
+  background-color: colors.$surface-variant;
+  color: colors.$text-secondary;
+  font-size: 13px;
+  font-weight: 600;
 }

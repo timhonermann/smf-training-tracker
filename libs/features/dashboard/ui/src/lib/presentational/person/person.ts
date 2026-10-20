@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 import {
   PersonTrainingRequirementMetric,
   trainingRequirementStatus,
@@ -6,7 +7,7 @@ import {
 
 @Component({
   selector: 'stt-person',
-  imports: [],
+  imports: [MatIcon],
   templateUrl: './person.html',
   styleUrl: './person.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

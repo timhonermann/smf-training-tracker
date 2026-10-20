@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { PersonCreationData, role, Role } from '@stt/shared/person/model';
+import { Tile } from '@stt/shared/page/ui';
 
 @Component({
   selector: 'stt-person-creation-form',
@@ -26,6 +27,7 @@ import { PersonCreationData, role, Role } from '@stt/shared/person/model';
     MatOption,
     MatSelect,
     ReactiveFormsModule,
+    Tile,
   ],
   templateUrl: './person-creation-form.html',
   styleUrl: './person-creation-form.scss',

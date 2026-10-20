@@ -1,4 +1,4 @@
-<button matFab extended (click)="clicked.emit()">
-  <mat-icon [svgIcon]="icon()"></mat-icon>
+<button [matButton]="appearance()" (click)="clicked.emit()">
+  <mat-icon [svgIcon]="icon()" />
   <ng-content />
 </button>

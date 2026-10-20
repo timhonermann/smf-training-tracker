@@ -1,36 +1,46 @@
-<form [formGroup]="form">
-  <mat-form-field>
-    <mat-label>Training Date</mat-label>
-    <input matInput formControlName="scheduledAt" [matDatepicker]="picker" />
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+<stt-tile class="form-tile">
+  <form class="fields" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Training Date</mat-label>
+      <input matInput formControlName="scheduledAt" [matDatepicker]="picker" />
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Location</mat-label>
-    <mat-select formControlName="location">
-      @for (location of locations(); track location.id) {
-        <mat-option [value]="location.id">{{ location.name }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Location</mat-label>
+      <mat-select formControlName="location">
+        @for (location of locations(); track location.id) {
+          <mat-option [value]="location.id">{{ location.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Participants</mat-label>
-    <mat-select formControlName="people" multiple>
-      @for (person of people(); track person.id) {
-        <mat-option [value]="person.id"
-          >{{ person.firstName }} {{ person.lastName }}</mat-option
-        >
-      }
-    </mat-select>
-  </mat-form-field>
-</form>
+    <mat-form-field appearance="outline">
+      <mat-label>Participants</mat-label>
+      <mat-select formControlName="people" multiple>
+        @for (person of people(); track person.id) {
+          <mat-option [value]="person.id"
+            >{{ person.firstName }} {{ person.lastName }}</mat-option
+          >
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
 
-<div class="person-list">
-  @for (selectedPerson of selectedPeople(); track selectedPerson.id) {
-    <div>{{ selectedPerson.firstName }} {{ selectedPerson.lastName }}</div>
+  @if (selectedPeople().length) {
+    <div class="selected-people">
+      <span class="selected-people-label">Selected Participants</span>
+      <mat-chip-set>
+        @for (selectedPerson of selectedPeople(); track selectedPerson.id) {
+          <mat-chip>
+            <stt-bullet matChipAvatar [personRole]="selectedPerson.role" />
+            {{ selectedPerson.firstName }} {{ selectedPerson.lastName }}
+          </mat-chip>
+        }
+      </mat-chip-set>
+    </div>
   }
-</div>
+</stt-tile>
 
-<stt-button [isDisabled]="!form.valid" (clicked)="create()">Create</stt-button>
+<stt-button class="create-button" [isDisabled]="!form.valid" (clicked)="create()">Create</stt-button>

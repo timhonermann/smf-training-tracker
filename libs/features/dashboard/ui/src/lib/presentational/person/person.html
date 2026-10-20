@@ -1,2 +1,15 @@
-<div>{{ person().firstName }} {{ person().lastName }}</div>
-<div>{{ person().totalTrainings }}</div>
+<span class="badge">
+  @switch (person().trainingRequirementStatus) {
+    @case (trainingRequirementStatus.REACHED) {
+      <mat-icon fontIcon="check" />
+    }
+    @case (trainingRequirementStatus.ALMOST_REACHED) {
+      <mat-icon fontIcon="schedule" />
+    }
+    @default {
+      <mat-icon fontIcon="close" />
+    }
+  }
+</span>
+<span class="name">{{ person().firstName }} {{ person().lastName }}</span>
+<span class="value">{{ person().totalTrainings }}</span>

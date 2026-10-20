@@ -1,11 +1,30 @@
+@use 'breakpoints';
+
 :host {
-  display: flex;
+  display: block;
   height: 100%;
-  flex-direction: column;
-  gap: 16px;
 }
 
-.list-container {
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: breakpoints.$tablet) {
+    gap: 24px;
+  }
+}
+
+.list-tile {
   flex: 1;
+  min-height: 0;
+  padding: 0;
   overflow: auto;
+}
+
+.list {
+  padding: 0;
 }

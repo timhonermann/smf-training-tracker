@@ -1,5 +1,6 @@
-<div class="item-container">
-  <span class="name">{{ personData().firstName }}</span>
-  <span class="name">{{ personData().lastName }}</span>
-  <stt-person-role-tag class="tag" [role]="personData().role" />
-</div>
+<mat-list-item class="item">
+  <span matListItemTitle class="name"
+    >{{ personData().firstName }} {{ personData().lastName }}</span
+  >
+  <stt-person-role-tag matListItemMeta class="tag" [role]="personData().role" />
+</mat-list-item>

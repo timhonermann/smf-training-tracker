@@ -1,14 +1,46 @@
+@use 'colors';
+
+// Fields scroll inside the tile, the create button stays at the bottom.
 :host {
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  flex: 1;
+  gap: 16px;
 }
 
-.person-list {
-  flex: 1;
+.form-tile {
   min-height: 0;
   overflow: auto;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selected-people {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid colors.$border;
+}
+
+.selected-people-label {
+  color: colors.$text-secondary;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Center the role bullet in the chip's avatar slot.
+stt-bullet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-button {
+  margin-top: auto;
 }
 
 mat-form-field {

@@ -1,9 +1,20 @@
-<stt-back-button [link]="backLink()" />
+<div class="page">
+  <div class="page-header">
+    <stt-back-button [link]="backLink()" />
+    <stt-page-title
+      title="New Location"
+      subtitle="Add a place where trainings take place"
+    />
+  </div>
 
-<mat-form-field appearance="outline">
-  <mat-label>Location Name</mat-label>
-  <input matInput [formControl]="nameControl
-" />
-</mat-form-field>
+  <stt-tile class="form-tile">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Location Name</mat-label>
+      <input matInput [formControl]="nameControl" />
+    </mat-form-field>
+  </stt-tile>
 
-<stt-button [isDisabled]="!nameControl.valid" (clicked)="create()">Create</stt-button>
+  <stt-button class="create-button" [isDisabled]="!nameControl.valid" (clicked)="create()"
+    >Create</stt-button
+  >
+</div>

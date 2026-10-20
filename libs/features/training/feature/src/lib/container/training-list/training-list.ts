@@ -5,10 +5,11 @@ import {
   TrainingListItem,
 } from '@stt/features/training/ui';
 import { MatAccordion } from '@angular/material/expansion';
+import { PageTitle } from '@stt/shared/page/ui';
 
 @Component({
   selector: 'stt-training-list',
-  imports: [TrainingListItem, MatAccordion, TrainingListActions],
+  imports: [TrainingListItem, MatAccordion, TrainingListActions, PageTitle],
   templateUrl: './training-list.html',
   styleUrl: './training-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,13 +1,19 @@
-.item-container {
-  display: flex;
-  align-items: center;
-  padding: 5px 20px;
+@use 'colors';
+
+:host {
+  display: block;
+}
+
+.item {
+  padding-inline: 16px;
 
   .name {
-    flex: 2;
+    color: colors.$text;
+    font-weight: 500;
   }
 
+  // Center the role tag vertically in the row.
   .tag {
-    flex: 1;
+    align-self: center;
   }
 }

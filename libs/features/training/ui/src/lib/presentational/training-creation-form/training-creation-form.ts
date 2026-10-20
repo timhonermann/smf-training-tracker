@@ -26,7 +26,10 @@ import {
   TrainingLocationData,
 } from '@stt/features/training/model';
 import { PersonData } from '@stt/shared/person/model';
+import { MatChip, MatChipAvatar, MatChipSet } from '@angular/material/chips';
+import { Tile } from '@stt/shared/page/ui';
 import { map } from 'rxjs';
+import { Bullet } from '../bullet/bullet';
 import { outputFromObservable } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -44,6 +47,11 @@ import { outputFromObservable } from '@angular/core/rxjs-interop';
     MatSelect,
     MatSuffix,
     ReactiveFormsModule,
+    MatChip,
+    MatChipAvatar,
+    MatChipSet,
+    Tile,
+    Bullet,
   ],
   templateUrl: './training-creation-form.html',
   styleUrl: './training-creation-form.scss',

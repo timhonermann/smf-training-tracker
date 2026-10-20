@@ -1,15 +1,26 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { BackButton } from '@stt/shared/button/ui';
-import { MatFormField } from '@angular/material/form-field';
+import { MatFormField, MatPrefix } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
 import { MatInput, MatLabel } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { featureRoutes } from '@stt/shared/routing/model';
+import { PageTitle } from '@stt/shared/page/ui';
 import { outputFromObservable } from '@angular/core/rxjs-interop';
 import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'stt-training-requirement-header',
-  imports: [BackButton, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+  imports: [
+    BackButton,
+    MatFormField,
+    MatIcon,
+    MatInput,
+    MatLabel,
+    MatPrefix,
+    PageTitle,
+    ReactiveFormsModule,
+  ],
   templateUrl: './training-requirement-header.html',
   styleUrl: './training-requirement-header.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

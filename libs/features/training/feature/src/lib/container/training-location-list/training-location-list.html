@@ -1,11 +1,27 @@
-<stt-back-button [link]="backLink()" />
+<div class="page">
+  <div class="page-header">
+    <stt-back-button [link]="backLink()" />
+    <stt-page-title
+      title="Locations"
+      subtitle="Places where trainings take place"
+    />
+  </div>
 
-<div class="list-container">
-  @for (location of store.entities(); track location.id) {
-    <div class="list-item">{{ location.name }}</div>
-  }
+  <stt-tile class="list-tile">
+    <mat-list class="list">
+      @for (location of store.entities(); track location.id; let last = $last) {
+        <mat-list-item class="list-item">
+          <mat-icon matListItemIcon class="icon" svgIcon="location" />
+          <span matListItemTitle class="name">{{ location.name }}</span>
+        </mat-list-item>
+        @if (!last) {
+          <mat-divider />
+        }
+      }
+    </mat-list>
+  </stt-tile>
+
+  <stt-button (clicked)="store.navigateToTrainingLocationCreation()"
+    >Create Training Location</stt-button
+  >
 </div>
-
-<stt-button (clicked)="store.navigateToTrainingLocationCreation()"
-  >Create Training Location</stt-button
->
