@@ -1,0 +1,20 @@
+{
+  "name": "shared-page-layout",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/page/layout/src",
+  "prefix": "stt",
+  "projectType": "library",
+  "tags": ["domain:shared", "type:layout"],
+  "targets": {
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../../coverage/libs/shared/page/layout"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

@@ -1,5 +1,5 @@
-<div class="page">
-  <stt-page-title title="Trainings" subtitle="All conducted training sessions" />
+<stt-page-layout>
+  <stt-page-title pageHeader title="Trainings" subtitle="All conducted training sessions" />
 
   <mat-accordion class="list-container">
     @for (training of store.entities(); track training.id) {
@@ -11,4 +11,4 @@
     (createTrainingClicked)="store.navigateToTrainingCreation()"
     (trainingLocationClicked)="store.navigateToTrainingLocations()"
   />
-</div>
+</stt-page-layout>

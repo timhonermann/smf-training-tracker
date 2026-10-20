@@ -8,6 +8,7 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { YearReferenceParam } from '@stt/features/dashboard/model';
 import { Tile } from '@stt/shared/page/ui';
+import { PageLayout } from '@stt/shared/page/layout';
 
 @Component({
   selector: 'stt-training-requirement',
@@ -17,6 +18,7 @@ import { Tile } from '@stt/shared/page/ui';
     TrainingRequirementTitle,
     TrainingRequirementList,
     Tile,
+    PageLayout,
   ],
   templateUrl: './training-requirement.html',
   styleUrl: './training-requirement.scss',

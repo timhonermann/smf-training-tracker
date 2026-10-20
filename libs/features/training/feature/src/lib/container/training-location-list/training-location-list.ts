@@ -16,6 +16,7 @@ import { BackButton, Button } from '@stt/shared/button/ui';
 import { TrainingLocationStore } from '@stt/features/training/domain';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { PageTitle, Tile } from '@stt/shared/page/ui';
+import { PageLayout } from '@stt/shared/page/layout';
 
 @Component({
   selector: 'stt-training-location-list',
@@ -30,6 +31,7 @@ import { PageTitle, Tile } from '@stt/shared/page/ui';
     MatListItemTitle,
     PageTitle,
     Tile,
+    PageLayout,
   ],
   templateUrl: './training-location-list.html',
   styleUrl: './training-location-list.scss',

@@ -1,8 +1,6 @@
-<div class="page">
-  <div class="page-header">
-    <stt-back-button [link]="'/' + featureRoutes.PERSON" />
-    <stt-page-title title="New Person" subtitle="Add a member, decoy or RG lead" />
-  </div>
+<stt-page-layout>
+  <stt-back-button pageHeader [link]="'/' + featureRoutes.PERSON" />
+  <stt-page-title pageHeader title="New Person" subtitle="Add a member, decoy or RG lead" />
 
   <stt-person-creation-form class="form" (createClicked)="store.create($event)" />
-</div>
+</stt-page-layout>

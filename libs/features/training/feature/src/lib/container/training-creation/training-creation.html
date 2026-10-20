@@ -1,11 +1,10 @@
-<div class="page">
-  <div class="page-header">
-    <stt-back-button [link]="backLink()" />
-    <stt-page-title
-      title="New Training"
-      subtitle="Record a training session and its participants"
-    />
-  </div>
+<stt-page-layout>
+  <stt-back-button pageHeader [link]="backLink()" />
+  <stt-page-title
+    pageHeader
+    title="New Training"
+    subtitle="Record a training session and its participants"
+  />
 
   <stt-training-creation-form
     class="form"
@@ -15,4 +14,4 @@
     (createClicked)="trainingStore.create($event)"
     (selectedPeopleIdsChanged)="trainingStore.setSelectedPersonIds($event)"
   />
-</div>
+</stt-page-layout>

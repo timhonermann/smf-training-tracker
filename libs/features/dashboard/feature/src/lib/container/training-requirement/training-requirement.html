@@ -1,9 +1,9 @@
-<div class="page">
-  <stt-training-requirement-header (searchInputChanged)="store.setSearchValue($event)" />
+<stt-page-layout>
+  <stt-training-requirement-header pageHeader (searchInputChanged)="store.setSearchValue($event)" />
 
   <stt-tile class="list-tile">
     <stt-training-requirement-title />
 
     <stt-training-requirement-list class="list" [people]="store.peopleSortedByTrainings()" />
   </stt-tile>
-</div>
+</stt-page-layout>
