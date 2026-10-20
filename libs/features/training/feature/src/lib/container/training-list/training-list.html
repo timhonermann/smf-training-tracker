@@ -1,10 +1,14 @@
-<mat-accordion class="list-container">
-  @for (training of store.entities(); track training.id) {
-    <stt-training-list-item [item]="training" />
-  }
-</mat-accordion>
+<div class="page">
+  <stt-page-title title="Trainings" subtitle="All conducted training sessions" />
 
-<stt-training-list-actions
-  (createTrainingClicked)="store.navigateToTrainingCreation()"
-  (trainingLocationClicked)="store.navigateToTrainingLocations()"
-/>
+  <mat-accordion class="list-container">
+    @for (training of store.entities(); track training.id) {
+      <stt-training-list-item [item]="training" />
+    }
+  </mat-accordion>
+
+  <stt-training-list-actions
+    (createTrainingClicked)="store.navigateToTrainingCreation()"
+    (trainingLocationClicked)="store.navigateToTrainingLocations()"
+  />
+</div>

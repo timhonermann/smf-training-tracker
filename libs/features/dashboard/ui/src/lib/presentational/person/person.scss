@@ -1,21 +1,65 @@
+@use 'sass:color';
 @use 'colors';
 
+// A row with the requirement status shown like the dashboard's sub-metrics:
+// a solid status badge and a tinted value.
 :host {
   display: flex;
-  padding: 8px 16px;
-  justify-content: space-between;
-  color: colors.$surface;
-  border-radius: 8px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: colors.$text;
 
   &.reached {
-    background-color: colors.$success;
+    --status-color: #{colors.$success};
+    --status-background: #{colors.$success-background};
   }
 
   &.almost-reached {
-    background-color: colors.$warning;
+    --status-color: #{colors.$warning};
+    --status-background: #{colors.$warning-background};
   }
 
   &.not-reached {
-    background-color: colors.$red;
+    --status-color: #{colors.$red};
+    --status-background: #{color.change(colors.$red, $alpha: 0.1)};
   }
+}
+
+.badge {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--status-color);
+  color: colors.$surface;
+
+  mat-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  }
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value {
+  flex: none;
+  min-width: 32px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background-color: var(--status-background);
+  color: var(--status-color);
+  font-weight: 700;
+  text-align: center;
 }

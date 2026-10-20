@@ -1,9 +1,18 @@
-<div class="list-container">
-  @for (person of store.entities(); track person.id) {
-    <stt-person-list-item [personData]="person" />
-  }
-</div>
+<div class="page">
+  <stt-page-title title="People" subtitle="All members, decoys and RG leads" />
 
-<stt-button (clicked)="store.navigateToPersonCreation()"
-  >Create Person</stt-button
->
+  <stt-tile class="list-tile">
+    <mat-list class="list">
+      @for (person of store.entities(); track person.id; let last = $last) {
+        <stt-person-list-item [personData]="person" />
+        @if (!last) {
+          <mat-divider />
+        }
+      }
+    </mat-list>
+  </stt-tile>
+
+  <stt-button (clicked)="store.navigateToPersonCreation()"
+    >Create Person</stt-button
+  >
+</div>

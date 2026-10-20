@@ -1,9 +1,18 @@
-<stt-back-button [link]="backLink()" />
+<div class="page">
+  <div class="page-header">
+    <stt-back-button [link]="backLink()" />
+    <stt-page-title
+      title="New Training"
+      subtitle="Record a training session and its participants"
+    />
+  </div>
 
-<stt-training-creation-form
-  [locations]="locationStore.entities()"
-  [people]="trainingStore.people()"
-  [selectedPeople]="trainingStore.selectedPeople()"
-  (createClicked)="trainingStore.create($event)"
-  (selectedPeopleIdsChanged)="trainingStore.setSelectedPersonIds($event)"
-/>
+  <stt-training-creation-form
+    class="form"
+    [locations]="locationStore.entities()"
+    [people]="trainingStore.people()"
+    [selectedPeople]="trainingStore.selectedPeople()"
+    (createClicked)="trainingStore.create($event)"
+    (selectedPeopleIdsChanged)="trainingStore.setSelectedPersonIds($event)"
+  />
+</div>

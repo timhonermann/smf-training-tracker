@@ -1,5 +1,13 @@
-<stt-back-button [link]="backLink()" />
-<mat-form-field class="form-field" appearance="outline">
+<div class="page-header">
+  <stt-back-button [link]="backLink()" />
+  <stt-page-title
+    title="Training Requirement"
+    subtitle="Trainings per person and their requirement status"
+  />
+</div>
+
+<mat-form-field class="form-field" appearance="outline" subscriptSizing="dynamic">
   <mat-label>Search</mat-label>
+  <mat-icon matPrefix fontIcon="search" />
   <input matInput [formControl]="searchControl" />
 </mat-form-field>

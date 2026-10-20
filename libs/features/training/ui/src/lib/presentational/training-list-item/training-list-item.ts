@@ -1,6 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TrainingData } from '@stt/features/training/model';
-import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import {
+  MatExpansionPanel,
+  MatExpansionPanelHeader,
+  MatExpansionPanelTitle,
+} from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
 import { DatePipe } from '@angular/common';
 import { PersonList } from '../person-list/person-list';
 
@@ -12,6 +17,7 @@ import { PersonList } from '../person-list/person-list';
     MatExpansionPanelTitle,
     DatePipe,
     PersonList,
+    MatIcon,
   ],
   templateUrl: './training-list-item.html',
   styleUrl: './training-list-item.scss',

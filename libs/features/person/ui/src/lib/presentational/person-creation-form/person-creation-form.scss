@@ -1,3 +1,25 @@
-.create-button, mat-form-field {
+// Fields scroll inside the tile, the create button stays at the bottom.
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-tile {
+  min-height: 0;
+  overflow: auto;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.create-button {
+  margin-top: auto;
+}
+
+mat-form-field {
   width: 100%;
 }

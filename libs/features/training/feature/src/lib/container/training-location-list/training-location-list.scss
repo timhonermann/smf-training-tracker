@@ -1,15 +1,50 @@
+@use 'colors';
+@use 'breakpoints';
+
 :host {
-  display: flex;
+  display: block;
   height: 100%;
-  flex-direction: column;
-  gap: 16px;
 }
 
-.list-container {
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: breakpoints.$tablet) {
+    gap: 24px;
+  }
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.list-tile {
   flex: 1;
+  min-height: 0;
+  padding: 0;
   overflow: auto;
 }
 
+.list {
+  padding: 0;
+}
+
 .list-item {
-  height: 24px;
+  padding-inline: 16px;
+
+  .icon {
+    color: colors.$text-secondary;
+  }
+
+  .name {
+    color: colors.$text;
+    font-weight: 500;
+  }
 }

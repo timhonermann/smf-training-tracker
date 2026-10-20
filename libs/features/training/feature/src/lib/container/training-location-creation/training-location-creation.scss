@@ -1,5 +1,33 @@
+@use 'breakpoints';
+
 :host {
+  display: block;
+  height: 100%;
+}
+
+.page {
   display: flex;
-  gap: 16px;
   flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: breakpoints.$tablet) {
+    gap: 24px;
+  }
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.create-button {
+  margin-top: auto;
 }

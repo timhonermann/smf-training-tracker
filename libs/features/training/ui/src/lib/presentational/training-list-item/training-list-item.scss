@@ -1,19 +1,82 @@
-.header {
-  display: flex;
-  height: 80px;
-  align-items: center;
+@use '@angular/material' as mat;
+@use 'breakpoints';
+@use 'colors';
+
+// Each panel looks like a dashboard tile.
+:host {
+  display: block;
+
+  @include mat.expansion-overrides(
+    (
+      container-shape: 16px,
+      container-background-color: colors.$surface,
+      container-elevation-shadow: (
+        0 1px 2px rgb(33 29 26 / 4%),
+        0 4px 12px rgb(33 29 26 / 6%),
+      ),
+      header-collapsed-state-height: 80px,
+      header-expanded-state-height: 80px,
+      header-indicator-color: colors.$text-secondary,
+    )
+  );
+}
+
+.expansion-panel {
+  border: 1px solid colors.$border;
 }
 
 .title {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
 
-  .description {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    font-weight: 300;
+.date {
+  color: colors.$text;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+  min-width: 0;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: colors.$text-secondary;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.detail-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.detail-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.person-list {
+  padding-top: 16px;
+  border-top: 1px solid colors.$border;
+}
+
+@media (min-width: breakpoints.$tablet) {
+  .date {
+    font-size: 18px;
   }
 }

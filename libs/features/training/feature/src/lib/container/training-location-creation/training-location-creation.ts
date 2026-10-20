@@ -11,6 +11,7 @@ import { BackButton, Button } from '@stt/shared/button/ui';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { TrainingLocationStore } from '@stt/features/training/domain';
 import { TrainingLocationCreationData } from '@stt/features/training/model';
+import { PageTitle, Tile } from '@stt/shared/page/ui';
 
 @Component({
   selector: 'stt-training-location-creation',
@@ -21,6 +22,8 @@ import { TrainingLocationCreationData } from '@stt/features/training/model';
     ReactiveFormsModule,
     BackButton,
     Button,
+    PageTitle,
+    Tile,
   ],
   templateUrl: './training-location-creation.html',
   styleUrl: './training-location-creation.scss',

@@ -1,5 +1,9 @@
-<stt-training-requirement-header (searchInputChanged)="store.setSearchValue($event)" />
+<div class="page">
+  <stt-training-requirement-header (searchInputChanged)="store.setSearchValue($event)" />
 
-<stt-training-requirement-title />
+  <stt-tile class="list-tile">
+    <stt-training-requirement-title />
 
-<stt-training-requirement-list class="list" [people]="store.peopleSortedByTrainings()" />
+    <stt-training-requirement-list class="list" [people]="store.peopleSortedByTrainings()" />
+  </stt-tile>
+</div>

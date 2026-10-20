@@ -1,14 +1,19 @@
 <mat-expansion-panel class="expansion-panel">
   <mat-expansion-panel-header class="header">
     <mat-panel-title class="title">
-      <div>{{ item().scheduledAt | date }}</div>
-      <div class="description">
-        <div>{{ item().location.name }}</div>
-        <div>Participants: {{ item().people.length }}</div>
-      </div>
+      <span class="date">{{ item().scheduledAt | date }}</span>
+      <span class="details">
+        <span class="detail">
+          <mat-icon class="detail-icon" svgIcon="location" />
+          <span class="detail-text">{{ item().location.name }}</span>
+        </span>
+        <span class="detail">
+          <mat-icon class="detail-icon" svgIcon="group" />
+          <span class="detail-text">Participants: {{ item().people.length }}</span>
+        </span>
+      </span>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <stt-person-list [people]="item().people" />
-  
+  <stt-person-list class="person-list" [people]="item().people" />
 </mat-expansion-panel>

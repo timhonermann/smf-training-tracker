@@ -1,19 +1,27 @@
+@use 'sass:color';
+
+// Pill like the dashboard's "Current Year" tag: tinted background, colored text.
 :host {
-  display: flex;
-  padding: 5px 10px;
-  border-radius: 30px;
-  color: white;
+  display: inline-flex;
   justify-content: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
 
   &.member {
-    background-color: green;
+    background-color: color.change(green, $alpha: 0.1);
+    color: green;
   }
 
   &.decoy {
-    background-color: purple;
+    background-color: color.change(purple, $alpha: 0.1);
+    color: purple;
   }
 
   &.rg-lead {
-    background-color: black;
+    background-color: color.change(black, $alpha: 0.08);
+    color: black;
   }
 }

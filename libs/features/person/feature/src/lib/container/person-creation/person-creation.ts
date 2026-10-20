@@ -4,10 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { featureRoutes } from '@stt/shared/routing/model';
 import { BackButton } from '@stt/shared/button/ui';
 import { PersonCreationForm } from '@stt/features/person/ui';
+import { PageTitle } from '@stt/shared/page/ui';
 
 @Component({
   selector: 'stt-person-creation',
-  imports: [ReactiveFormsModule, BackButton, PersonCreationForm],
+  imports: [ReactiveFormsModule, BackButton, PersonCreationForm, PageTitle],
   templateUrl: './person-creation.html',
   styleUrl: './person-creation.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

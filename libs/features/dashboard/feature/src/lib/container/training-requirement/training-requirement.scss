@@ -1,8 +1,31 @@
+@use 'breakpoints';
+
 :host {
+  display: block;
+  height: 100%;
+}
+
+.page {
   display: flex;
   flex-direction: column;
+  gap: 16px;
   height: 100%;
-  gap: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: breakpoints.$tablet) {
+    gap: 24px;
+  }
+}
+
+// Column titles stay put, the people scroll below them.
+.list-tile {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .list {

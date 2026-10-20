@@ -1,21 +1,31 @@
+@use 'breakpoints';
+
 :host {
-  display: flex;
+  display: block;
   height: 100%;
-  flex-direction: column;
-  gap: 16px;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (min-width: breakpoints.$tablet) {
+    gap: 24px;
+  }
+}
+
+// Leave room at the edges so the panel shadows are not clipped.
 .list-container {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 10px;
+  gap: 12px;
   min-height: 0;
-  overflow: auto;
-}
-
-.person-list {
-  flex: 1;
-  min-height: 0;
+  margin: -4px;
+  padding: 4px;
   overflow: auto;
 }
